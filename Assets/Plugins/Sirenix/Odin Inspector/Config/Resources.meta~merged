@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+<<<<<<< HEAD
+<<<<<<< HEAD:Assets/Plugins/Sirenix/Odin Inspector/Config/Resources.meta
+guid: 89a42bc4a9b5bad40820933496096837
+=======
+guid: faf232747e1073140b82dc7347b39eb9
+>>>>>>> Peng_Branch:Assets/Plugins/Sirenix/Odin Inspector/Config/Resources/Sirenix.meta
+=======
+guid: a7dbb11d7e9690b4296ab5013dda5136
+>>>>>>> Peng_Branch
+folderAsset: yes
+DefaultImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
