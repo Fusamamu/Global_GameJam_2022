@@ -1,13 +1,17 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
+using UnityEngine.UIElements;
 using Random = UnityEngine.Random;
 
 public class WallBlock : MonoBehaviour
 {
     [SerializeField] private Rigidbody rigidbody;
     [SerializeField] private BoxCollider boxCollider;
+
+    private Vector3 hitNormal;
 
     private void Start()
     {
@@ -28,15 +32,16 @@ public class WallBlock : MonoBehaviour
 
         var _ghost = _other.collider.GetComponent<Ghost>();
 
-        var _ghostHitDir  = _ghost.GetCurrentDirection();
+        var _ghostHitDir  = _ghost.GetPlaneDirection();
         var _hitNormal    = _other.contacts[0].normal;
 
-        var _reflectDir   = Vector3.Reflect(_ghostHitDir, _hitNormal);
+        _hitNormal = new Vector3(_hitNormal.x, 0, _hitNormal.z).normalized;
 
-        _reflectDir = new Vector3(_reflectDir.x, 0, _reflectDir.z);
+        hitNormal = _hitNormal;
+
+        var _reflectDir   = Vector3.Reflect(_ghostHitDir, _hitNormal);
         
         _ghost.SetVelocity(_reflectDir * _ghost.Speed);
-        
     }
 
     private Vector3 GetReflectVector(Vector3 _hit)
@@ -46,5 +51,15 @@ public class WallBlock : MonoBehaviour
         var _reflectVec = Quaternion.AngleAxis(-20, Vector3.up) * _hitNormal;
 
         return _reflectVec;
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        if (hitNormal != Vector3.zero)
+        {
+            var _target = hitNormal + transform.position;
+            Gizmos.DrawLine(transform.position, _target * 2f);
+        }
     }
 }

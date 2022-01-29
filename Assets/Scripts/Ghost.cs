@@ -27,9 +27,11 @@ public class Ghost : MonoBehaviour
         RandomDirection();
     }
 
-    public Vector3 GetCurrentDirection()
+    public Vector3 GetPlaneDirection()
     {
-        return rigidbody.velocity.normalized;
+        var _currentVec = rigidbody.velocity;
+        var _direction = new Vector3(_currentVec.x, 0, _currentVec.z);
+        return _direction.normalized;
     }
  
     public void SetVelocity(Vector3 _velocity)
@@ -47,8 +49,10 @@ public class Ghost : MonoBehaviour
 
     public void RandomDirection()
     {
-        var _randomDirX = Random.Range(0, 1f);
-        var _randomDirZ = Random.Range(0, 1f);
+        // var _randomDirX = Random.Range(0, 1f);
+        // var _randomDirZ = Random.Range(0, 1f);
+        var _randomDirX = 0.5f;
+        var _randomDirZ = 0.5f;
 
         var _normalizedDir = new Vector3(_randomDirX, 0, _randomDirZ).normalized;
 
