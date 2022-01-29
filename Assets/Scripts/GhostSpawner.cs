@@ -13,6 +13,7 @@ public class GhostSpawner : MonoBehaviour
 
     [SerializeField] private List<Vector3> spawnPositions = new List<Vector3>();
 
+    [SerializeField] private bool debugGizmos = true;
     
     [SerializeField] private float gizmosSphereSize = 0.05f;
 
@@ -47,6 +48,8 @@ public class GhostSpawner : MonoBehaviour
 
     private void OnDrawGizmos()
     {
+        if(!debugGizmos) return;
+        
         Gizmos.color = new Color(1, 0, 0, 0.5f);
         Gizmos.DrawCube(transform.position, spawnArea.size);
         

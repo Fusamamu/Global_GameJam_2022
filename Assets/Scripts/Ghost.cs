@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -14,6 +15,8 @@ public class Ghost : MonoBehaviour
     [SerializeField, Range(1, 20)] private float speed = 5;
 
     private Vector3 lastVelocity;
+
+    private bool isGettingVacuumed = false;
     
     private void Start()
     {
@@ -27,6 +30,17 @@ public class Ghost : MonoBehaviour
         rigidbody.constraints = RigidbodyConstraints.FreezeRotation;
 
         RandomDirection();
+    }
+
+    private void Update()
+    {
+        if (isGettingVacuumed)
+        {
+            var _mainPlayer = FindObjectOfType<Player>();
+            var _playerPosition = _mainPlayer.transform.position;
+            var _currentPosition = transform.position;
+            transform.position = Vector3.MoveTowards(_currentPosition, _playerPosition, 5 * Time.deltaTime);
+        }
     }
 
     private void FixedUpdate()
@@ -53,18 +67,36 @@ public class Ghost : MonoBehaviour
         rigidbody.velocity = _velocity;
     }
 
-    // public void KeepMoving()
-    // {
-    //     if (rigidbody.velocity.magnitude < 1)
-    //     {
-    //        RandomDirection();
-    //     }
-    // }
+    public void GotVacuumed()
+    {
+        if (!isGettingVacuumed)
+        {
+            isGettingVacuumed = true;
+
+            var _sequence = DOTween.Sequence();
+
+            var _targetScale = Vector3.zero;
+            var _duration = 1f;
+
+            _sequence.Append(transform.DOPunchScale(new Vector3(0.5f, 0.5f, 0.5f), 10f, 10, 1f));
+            _sequence.Join(transform.DOScale(_targetScale, _duration).OnComplete(() =>
+            {
+                Destroy(gameObject);
+            }));
+        }
+    }
+
+    private void YoyoEffect()
+    {
+        var _sequence = DOTween.Sequence()
+            .Append(transform.DOLocalRotate(new Vector3(0, 0, 360), 10f, RotateMode.FastBeyond360).SetRelative())
+            .Join(transform.DOPunchScale(new Vector3(0.5f, 0.5f, 0.5f), 10f, 10, 1f));
+        
+        _sequence.SetLoops(-1, LoopType.Yoyo);
+    }
 
     public void RandomDirection()
     {
-        // var _randomDirX = Random.Range(0, 1f);
-        // var _randomDirZ = Random.Range(0, 1f);
         var _randomDirX = 1;
         var _randomDirZ = 1;
 

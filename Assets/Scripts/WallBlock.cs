@@ -19,7 +19,7 @@ public class WallBlock : MonoBehaviour
         boxCollider = gameObject.GetOrAddComponent<BoxCollider>();
 
         rigidbody.useGravity  = false;
-        rigidbody.isKinematic = false;
+        rigidbody.isKinematic = true;
         rigidbody.constraints = RigidbodyConstraints.FreezeAll;
 
         if(GetComponent<MeshCollider>() != null)
@@ -28,20 +28,22 @@ public class WallBlock : MonoBehaviour
 
     private void OnCollisionEnter(Collision _other)
     {
-        if(!_other.collider.CompareTag("Ghost")) return;
+        if (_other.collider.CompareTag("Ghost"))
+        {
+            var _ghost = _other.collider.GetComponent<Ghost>();
 
-        var _ghost = _other.collider.GetComponent<Ghost>();
+            var _lastVelocity = _ghost.GetNormalizedLastVelocity();
+            
+            var _hitNormal    = _other.contacts[0].normal;
+            _hitNormal = new Vector3(_hitNormal.x, 0, _hitNormal.z).normalized;
 
-        var _lastVelocity = _ghost.GetNormalizedLastVelocity();
-        
-        var _hitNormal    = _other.contacts[0].normal;
-        _hitNormal = new Vector3(_hitNormal.x, 0, _hitNormal.z).normalized;
+            hitNormal = -_hitNormal;
 
-        hitNormal = -_hitNormal;
+            var _reflectDir   = Vector3.Reflect(_lastVelocity, -_hitNormal);
+            
+            _ghost.SetVelocity(_reflectDir * _ghost.Speed);
+        }
 
-        var _reflectDir   = Vector3.Reflect(_lastVelocity, -_hitNormal);
-        
-        _ghost.SetVelocity(_reflectDir * _ghost.Speed);
     }
 
     private void OnDrawGizmos()

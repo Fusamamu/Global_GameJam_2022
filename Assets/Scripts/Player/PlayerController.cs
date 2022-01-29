@@ -9,6 +9,8 @@ using UnityEngine.PlayerLoop;
 public class PlayerController : MonoBehaviour
 {
     public Action OnStaminaUpdate;
+    public event Action OnInhaling = delegate { };
+    public event Action OnExhaling = delegate { };
 
     [SerializeField] private float moveCD = 0.2f;
     [SerializeField] [ReadOnly] private bool canMove;
@@ -25,7 +27,7 @@ public class PlayerController : MonoBehaviour
     [Space]
     [FoldoutGroup("UnityEvent")] public UnityEvent OnOutStamina;
     [FoldoutGroup("UnityEvent")] public UnityEvent<Vector3> OnInhale;
-    [FoldoutGroup("UnityEvent")] public UnityEvent<Vector3>  OnExhale;
+    [FoldoutGroup("UnityEvent")] public UnityEvent<Vector3> OnExhale;
     [FoldoutGroup("UnityEvent")] public UnityEvent OnCollectedGhost;
     
     private Transform mousePos;
@@ -140,5 +142,10 @@ public class PlayerController : MonoBehaviour
             canMove = true;
             cd = moveCD;
         }
+    }
+
+    public Vector3 GetDirection()
+    {
+        return direction;
     }
 }
