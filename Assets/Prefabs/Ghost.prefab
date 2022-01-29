@@ -9721,6 +9721,7 @@ GameObject:
   - component: {fileID: 5077931475795302082}
   - component: {fileID: -8123064019048952166}
   - component: {fileID: 2705592748565518960}
+  - component: {fileID: -4096244815838321470}
   m_Layer: 9
   m_Name: Ghost
   m_TagString: Ghost
@@ -9775,3 +9776,16 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!135 &-4096244815838321470
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5077931475795302141}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
