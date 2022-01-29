@@ -11,6 +11,7 @@ public class GameManager : Singleton<GameManager>
     public bool isGamePause = false;
     
     [SerializeField] private PlayerController player;
+    [SerializeField] private GameplayManager gameplayManager;
 
     public PlayerController Player => player;
 
@@ -19,7 +20,7 @@ public class GameManager : Singleton<GameManager>
         ResumeTime();
         base.Init();
         player = FindObjectOfType<PlayerController>();
-        
+        gameplayManager = FindObjectOfType<GameplayManager>();
     }
 
     public void PauseTime()
@@ -36,16 +37,25 @@ public class GameManager : Singleton<GameManager>
     
     public void ReStartGame()
     {
-        SceneManager.LoadScene("Stage1 - Peng");
+        ResumeTime();
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        GhostManager.Instance.ClearGhost();
+        //Destroy(this.gameObject);
     }
 
     public void GoToMainMenu()
     {
-        
+        SceneManager.LoadScene("01Menu");
+    }
+
+    public void OnWin()
+    {
+        gameplayManager.Win();
     }
 
     public void OnGameOver()
     {
+        PauseTime();
         var _mainUI = FindObjectOfType<MainUIController>();
         _mainUI.DisplayGameOverUI();
     }

@@ -11,6 +11,12 @@ public class GhostManager : Singleton<GhostManager>
     [SerializeField] private Dictionary<int, List<GameObject>> ghostsEachWave = new Dictionary<int, List<GameObject>>();
 
 
+    public void ClearGhost()
+    {
+        allGhostInScene.Clear();
+        ghostsEachWave.Clear();
+    }
+    
     public void StoreGhost(GameObject _ghost)
     {
         allGhostInScene.Add(_ghost);

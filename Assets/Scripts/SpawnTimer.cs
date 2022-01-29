@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Sirenix.OdinInspector;
 using TMPro;
 using UnityEngine;
 
@@ -10,7 +11,7 @@ public class SpawnTimer : MonoBehaviour
     [SerializeField] private bool  timerIsRunning = true;
     [SerializeField] private float spawnTimer;
     [SerializeField] private TextMeshProUGUI timerText;
-
+    [SerializeField][ReadOnly]private bool isClear = false;
     public static event Action<SpawnTimer> OnTimeToSpawn = delegate { };
 
     [SerializeField] private int currentWaveOrder = 0;
@@ -24,7 +25,16 @@ public class SpawnTimer : MonoBehaviour
 
     private void Update()
     {
-        if (currentWaveOrder > waveDataList.Count - 1) return;
+        if (currentWaveOrder > waveDataList.Count - 1)
+        {
+            if (!isClear)
+            {
+                GameManager.Instance.OnWin();
+                isClear = true;
+                return;
+            }
+            return;
+        }
         
         var _currentWave = GetWaveDataByOrderIndex(currentWaveOrder);
 
