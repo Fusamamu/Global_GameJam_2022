@@ -7,9 +7,11 @@ public class GameplayManager : MonoBehaviour
 {
     public Action OnSwapFilter;
     public Action OnWin;
+    
     [SerializeField] private MainUIController mainUIController;
     [SerializeField] private WinUI winUI;
     [SerializeField] private CameraController cameraController;
+    
     void Awake()
     {
         GameManager.Instance.Init();
