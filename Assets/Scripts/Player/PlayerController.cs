@@ -9,6 +9,8 @@ using UnityEngine.PlayerLoop;
 public class PlayerController : MonoBehaviour
 {
     public Action OnStaminaUpdate;
+    public event Action OnInhaling = delegate { };
+    public event Action OnExhaling = delegate { };
 
     [SerializeField] private float moveCD = 0.2f;
     [SerializeField] [ReadOnly] private bool canMove;
@@ -25,7 +27,7 @@ public class PlayerController : MonoBehaviour
     [Space]
     [FoldoutGroup("UnityEvent")] public UnityEvent OnOutStamina;
     [FoldoutGroup("UnityEvent")] public UnityEvent<Vector3> OnInhale;
-    [FoldoutGroup("UnityEvent")] public UnityEvent<Vector3>  OnExhale;
+    [FoldoutGroup("UnityEvent")] public UnityEvent<Vector3> OnExhale;
     [FoldoutGroup("UnityEvent")] public UnityEvent OnCollectedGhost;
     
     private Transform mousePos;
@@ -33,6 +35,7 @@ public class PlayerController : MonoBehaviour
     private Camera cam;
     private LayerMask groundMask;
     private Vector3 direction;
+    private float cd = 0;
 
     public float Stamina => stamina;
 
@@ -91,6 +94,7 @@ public class PlayerController : MonoBehaviour
         {
             rb.AddForce(-direction * exhaleForce, ForceMode.Impulse);
             stamina -= exhaleStamina;
+            canMove = false;
             OnExhale?.Invoke(-direction);
         }
         else
@@ -107,6 +111,7 @@ public class PlayerController : MonoBehaviour
         {
             rb.AddForce(direction * inhaleForce, ForceMode.Impulse);
             stamina -= inhaleStamina;
+            canMove = false;
             OnInhale?.Invoke(direction);
         }
         else
@@ -126,14 +131,21 @@ public class PlayerController : MonoBehaviour
 
     private void UpdateTime()
     {
-        if (moveCD >= 0)
+        if (canMove) return;
+        if (cd >= 0)
         {
             canMove = false;
-            moveCD -= Time.deltaTime;
+            cd -= Time.deltaTime;
         }
         else
         {
             canMove = true;
+            cd = moveCD;
         }
+    }
+
+    public Vector3 GetDirection()
+    {
+        return direction;
     }
 }

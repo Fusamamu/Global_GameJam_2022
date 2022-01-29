@@ -19,7 +19,7 @@ public class WallBlock : MonoBehaviour
         boxCollider = gameObject.GetOrAddComponent<BoxCollider>();
 
         rigidbody.useGravity  = false;
-        rigidbody.isKinematic = false;
+        rigidbody.isKinematic = true;
         rigidbody.constraints = RigidbodyConstraints.FreezeAll;
 
         if(GetComponent<MeshCollider>() != null)
@@ -28,29 +28,22 @@ public class WallBlock : MonoBehaviour
 
     private void OnCollisionEnter(Collision _other)
     {
-        if(!_other.collider.CompareTag("Ghost")) return;
+        if (_other.collider.CompareTag("Ghost"))
+        {
+            var _ghost = _other.collider.GetComponent<Ghost>();
 
-        var _ghost = _other.collider.GetComponent<Ghost>();
+            var _lastVelocity = _ghost.GetNormalizedLastVelocity();
+            
+            var _hitNormal    = _other.contacts[0].normal;
+            _hitNormal = new Vector3(_hitNormal.x, 0, _hitNormal.z).normalized;
 
-        var _ghostHitDir  = _ghost.GetPlaneDirection();
-        var _hitNormal    = _other.contacts[0].normal;
+            hitNormal = -_hitNormal;
 
-        _hitNormal = new Vector3(_hitNormal.x, 0, _hitNormal.z).normalized;
+            var _reflectDir   = Vector3.Reflect(_lastVelocity, -_hitNormal);
+            
+            _ghost.SetVelocity(_reflectDir * _ghost.Speed);
+        }
 
-        hitNormal = _hitNormal;
-
-        var _reflectDir   = Vector3.Reflect(_ghostHitDir, _hitNormal);
-        
-        _ghost.SetVelocity(_reflectDir * _ghost.Speed);
-    }
-
-    private Vector3 GetReflectVector(Vector3 _hit)
-    {
-        var _hitNormal = new Vector3(_hit.x, 0, _hit.z);
-
-        var _reflectVec = Quaternion.AngleAxis(-20, Vector3.up) * _hitNormal;
-
-        return _reflectVec;
     }
 
     private void OnDrawGizmos()
@@ -58,8 +51,8 @@ public class WallBlock : MonoBehaviour
         Gizmos.color = Color.red;
         if (hitNormal != Vector3.zero)
         {
-            var _target = hitNormal + transform.position;
-            Gizmos.DrawLine(transform.position, _target * 2f);
+            var _target = hitNormal * 2f + transform.position;
+            Gizmos.DrawLine(transform.position, _target);
         }
     }
 }

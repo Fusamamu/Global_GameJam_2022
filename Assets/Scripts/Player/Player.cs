@@ -11,4 +11,9 @@ public class Player : MonoBehaviour
     {
         playerController = GetComponent<PlayerController>();
     }
+
+    public PlayerController GetController()
+    {
+        return playerController;
+    }
 }
