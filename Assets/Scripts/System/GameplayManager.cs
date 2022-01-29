@@ -30,7 +30,7 @@ public class GameplayManager : MonoBehaviour
 
     private void CreateSceneAssets()
     {
-        var _uiControllerPref = Resources.Load<MainUIController>("Prefabs/MainCanvas");
+        var _uiControllerPref = Resources.Load<MainUIController>("Prefabs/UI/MainCanvas");
         mainUIController = Instantiate(_uiControllerPref);
         cameraController = gameObject.GetOrAddComponent<CameraController>();
     }
