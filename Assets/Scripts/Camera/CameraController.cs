@@ -5,8 +5,11 @@ using UnityEngine.Events;
 
 public class CameraController : MonoBehaviour
 {
+    public LayerMask normalMask;
+    public LayerMask shadowMask;
     public UnityEvent<Filter> OnChangedFilter;
     private Camera camera;
+    
     public void Init()
     {
         camera = Camera.main;
@@ -14,11 +17,11 @@ public class CameraController : MonoBehaviour
         GameManager.Instance.currentFilter = Filter.Normal;
     }
 
-
     public void ShowMask(string _layerName)
     {
         camera.cullingMask |= 1 << LayerMask.NameToLayer(_layerName);
     }
+    
     public void HideMask(string _layerName)
     {
         camera.cullingMask &=  ~(1 << LayerMask.NameToLayer(_layerName));

@@ -29,7 +29,9 @@ public class PlayerController : MonoBehaviour
     [FoldoutGroup("UnityEvent")] public UnityEvent<Vector3> OnInhale;
     [FoldoutGroup("UnityEvent")] public UnityEvent<Vector3> OnExhale;
     [FoldoutGroup("UnityEvent")] public UnityEvent OnCollectedGhost;
-    
+
+    [SerializeField] private ParticleSystem dizzyParticle;
+    [SerializeField] private Transform arrowParent;
     private Transform mousePos;
     private Rigidbody rb;
     private Camera cam;
@@ -60,6 +62,17 @@ public class PlayerController : MonoBehaviour
         UpdateInput();
         UpdateStamina();
         UpdateTime();
+        UpdateArrow();
+    }
+
+    private void UpdateArrow()
+    {
+        direction.Normalize();
+
+        if (!(direction.sqrMagnitude > 0.001f)) return;
+        
+        float _toRotation  = Mathf.Atan2(direction.z, direction.x) * Mathf.Rad2Deg * -1;
+        arrowParent.rotation = Quaternion.Euler(0, _toRotation, 0);
     }
 
     private void UpdateInput()
@@ -119,6 +132,13 @@ public class PlayerController : MonoBehaviour
             OnOutStamina?.Invoke();
         }
     }
+
+    public void Dizzy()
+    {
+        canMove = false;
+        cd = 3;
+        dizzyParticle.gameObject.SetActive(true);
+    }
     
     private void UpdateStamina()
     {
@@ -139,6 +159,7 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
+            dizzyParticle.gameObject.SetActive(false);
             canMove = true;
             cd = moveCD;
         }

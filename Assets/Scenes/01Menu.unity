@@ -405,7 +405,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 450048127}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2035506693}
+        m_TargetAssemblyTypeName: MenuController, Assembly-CSharp
+        m_MethodName: ShowCredits
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &450048127
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -526,7 +538,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 492985040}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2035506693}
+        m_TargetAssemblyTypeName: MenuController, Assembly-CSharp
+        m_MethodName: Exit
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &492985040
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -647,7 +671,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 684187655}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2035506693}
+        m_TargetAssemblyTypeName: MenuController, Assembly-CSharp
+        m_MethodName: StartGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &684187655
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1397,3 +1433,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd49119086e7e5d4aab2483052af32dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  creditCanvas: {fileID: 0}
+  stageSelectName: 02StageSelect

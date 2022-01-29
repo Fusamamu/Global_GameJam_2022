@@ -1,6 +1,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using Sirenix.OdinInspector;
 using TMPro;
 using UnityEngine;
 
@@ -9,26 +11,69 @@ public class SpawnTimer : MonoBehaviour
     [SerializeField] private bool  timerIsRunning = true;
     [SerializeField] private float spawnTimer;
     [SerializeField] private TextMeshProUGUI timerText;
-
+    [SerializeField][ReadOnly]private bool isClear = false;
     public static event Action<SpawnTimer> OnTimeToSpawn = delegate { };
+
+    [SerializeField] private int currentWaveOrder = 0;
+   
+    private List<WaveData> waveDataList = new List<WaveData>();
+
+    private void Start()
+    {
+        waveDataList = FindObjectOfType<GhostSpawner>().GetWaveDataList();
+    }
 
     private void Update()
     {
-        //if(!timerIsRunning) return;
-        
-        if (spawnTimer > 0)
+        if (currentWaveOrder > waveDataList.Count - 1)
         {
-            spawnTimer -= Time.deltaTime;
+            if (!isClear)
+            {
+                GameManager.Instance.OnWin();
+                isClear = true;
+                return;
+            }
+            return;
+        }
+        
+        var _currentWave = GetWaveDataByOrderIndex(currentWaveOrder);
+
+        if (_currentWave.TimeLimit > 0)
+        {
+            _currentWave.TimeLimit -= Time.deltaTime;
         }
         else
         {
-            spawnTimer = 5;
-            //timerIsRunning = false;
+            var _ghostLeftCount = GhostManager.Instance.GetGhostLeftCountsByWaveIndex(currentWaveOrder);
+            if (_ghostLeftCount > 0)
+            {
+                GameManager.Instance.OnGameOver();
+                Debug.Log("Game Over");
+                DisplayTime(0);
+                return;
+            }
+            _currentWave.TimeLimit = 0;
             
+            currentWaveOrder++;
             OnTimeToSpawn?.Invoke(this);
         }
            
-        DisplayTime(spawnTimer);
+        DisplayTime(_currentWave.TimeLimit);
+    }
+
+    public int GetCurrentWaveOrderIndex()
+    {
+        return currentWaveOrder;
+    }
+
+    public WaveData GetCurrentWaveData()
+    {
+        return GetWaveDataByOrderIndex(currentWaveOrder);
+    }
+
+    private WaveData GetWaveDataByOrderIndex(int _orderIndex)
+    {
+        return waveDataList.FirstOrDefault(_data => _data.WaveOrder == _orderIndex);
     }
     
     private void DisplayTime(float _timeToDisplay)
@@ -39,4 +84,14 @@ public class SpawnTimer : MonoBehaviour
         var _timeText = $"{_minutes:00}:{_seconds:00}";
         timerText.SetText(_timeText);
     }
+}
+
+[System.Serializable]
+public class WaveData
+{
+    public int   WaveOrder;
+    public int   EnemyCount;
+    public float TimeLimit;
+    public Transform GroupSpawnPosition;
+    //public List<Vector3> SpawnPositions = new List<Vector3>();
 }
