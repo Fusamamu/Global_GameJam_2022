@@ -1,13 +1,9 @@
 fileFormatVersion: 2
-<<<<<<< HEAD
 <<<<<<< HEAD:Assets/Plugins/Sirenix/Odin Inspector/Config/Resources/Sirenix.meta
-guid: 08670a441456a5a4a9102e3eaa603e42
+guid: d8abfe0b1ba8a284db98e5ffc2c9e385
 =======
 guid: cce7ec83d913c1b4db666b6fa1af9ef5
 >>>>>>> Peng_Branch:Assets/Resources/Prefabs.meta
-=======
-guid: faf232747e1073140b82dc7347b39eb9
->>>>>>> Peng_Branch
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}
