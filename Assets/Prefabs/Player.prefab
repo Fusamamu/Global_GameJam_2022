@@ -107,6 +107,7 @@ GameObject:
   - component: {fileID: 2285759013504800817}
   - component: {fileID: 2285759013504800816}
   - component: {fileID: 2285759013504800823}
+  - component: {fileID: 348178422295081973}
   - component: {fileID: 2285759013504800822}
   - component: {fileID: 2285759013504800821}
   m_Layer: 0
@@ -138,7 +139,7 @@ CapsuleCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2285759013504800818}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: a9b41d7659b88774fba9ca33b03bf586, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.21885777
@@ -161,6 +162,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!114 &348178422295081973
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2285759013504800818}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 889e41aeb6ba66249847afee6ee94215, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerController: {fileID: 2285759013504800822}
 --- !u!114 &2285759013504800822
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -175,11 +189,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inhaleForce: 7
   exhaleForce: 3
-  inhaleStamina: 2
-  exhaleStamina: 3
+  inhaleStamina: 4
+  exhaleStamina: 2
   staminaRegen: 2
   maxStamina: 15
   stamina: 0
+  OnOutStamina:
+    m_PersistentCalls:
+      m_Calls: []
+  OnInhale:
+    m_PersistentCalls:
+      m_Calls: []
+  OnExhale:
+    m_PersistentCalls:
+      m_Calls: []
+  OnCollectedGhost:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &2285759013504800821
 MonoBehaviour:
   m_ObjectHideFlags: 0
