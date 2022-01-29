@@ -56,6 +56,7 @@ public class PlayerController : MonoBehaviour
     {
         UpdateInput();
         UpdateStamina();
+        UpdateTime();
     }
 
     private void UpdateInput()
