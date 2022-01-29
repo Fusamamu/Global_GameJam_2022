@@ -19,7 +19,8 @@ public class GhostSpawner : MonoBehaviour
     [SerializeField] private float gizmosSphereSize = 0.05f;
     
     [SerializeField] private List<WaveData> waveDataList = new List<WaveData>();
-    
+
+
     private void Start()
     {
         var _currentPos   = transform.position;
@@ -41,22 +42,29 @@ public class GhostSpawner : MonoBehaviour
     private void InitialSpawnGhost()
     {
         var _firstWave  = waveDataList.FirstOrDefault(_waveData => _waveData.WaveOrder == 0);
-        SpawnGhostFromWave(_firstWave);
+        var _spawnGhosts = SpawnGhostFromWave(_firstWave);
+        
+        GhostManager.Instance.AddGhostsEachWave(0, _spawnGhosts);
     }
     
     private void OnGhostSpawned(SpawnTimer _timer)
     {
-        var _waveData = _timer.GetCurrentWaveData();
-        SpawnGhostFromWave(_waveData);
+        var _waveIndex   = _timer.GetCurrentWaveOrderIndex();
+        var _waveData    = _timer.GetCurrentWaveData();
+        var _spawnGhosts = SpawnGhostFromWave(_waveData);
+        
+        GhostManager.Instance.AddGhostsEachWave(_waveIndex, _spawnGhosts);
     }
 
-    private void SpawnGhostFromWave(WaveData _waveData)
+    private List<GameObject> SpawnGhostFromWave(WaveData _waveData)
     {
-        if(_waveData == null) return;
+        if (_waveData == null) return null;
+
+        var _newGhosts = new List<GameObject>();
         
         var _spawnCount = _waveData.EnemyCount;
 
-        for (var _i = 0; _i <= _spawnCount; _i++)
+        for (var _i = 0; _i < _spawnCount; _i++)
         {
             Vector3 _spawnPos = Vector3.zero;
 
@@ -65,8 +73,13 @@ public class GhostSpawner : MonoBehaviour
                 _spawnPos = _waveData.GroupSpawnPosition.GetChild(_i).position;
             }
         
-            Instantiate(ghostPrefab, _spawnPos, Quaternion.identity);
+            var _newGhost = Instantiate(ghostPrefab, _spawnPos, Quaternion.identity);
+
+            _newGhosts.Add(_newGhost);
+            GhostManager.Instance.StoreGhost(_newGhost);
         }
+
+        return _newGhosts;
     }
 
     private void SpawnGhost(SpawnTimer _timer)
@@ -91,10 +104,10 @@ public class GhostSpawner : MonoBehaviour
     {
         if(!debugGizmos) return;
         
-        Gizmos.color = new Color(1, 0, 0, 0.5f);
-        Gizmos.DrawCube(transform.position, spawnArea.size);
-        
-        Gizmos.color = Color.yellow;
+        // Gizmos.color = new Color(1, 0, 0, 0.5f);
+        // Gizmos.DrawCube(transform.position, spawnArea.size);
+        //
+        // Gizmos.color = Color.yellow;
 
         if (waveDataList != null)
         {
@@ -108,7 +121,7 @@ public class GhostSpawner : MonoBehaviour
                 
                 foreach (Transform _transform in _groupSpawnPosition)
                 {
-                    Gizmos.DrawSphere(_transform.position, gizmosSphereSize);
+                    Gizmos.DrawSphere(_transform.localPosition, gizmosSphereSize);
                 }
             }
         }

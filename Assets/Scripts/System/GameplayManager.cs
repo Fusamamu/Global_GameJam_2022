@@ -6,8 +6,10 @@ using UnityEngine;
 public class GameplayManager : MonoBehaviour
 {
     public Action OnSwapFilter;
+    
     [SerializeField] private MainUIController mainUIController;
     [SerializeField] private CameraController cameraController;
+    
     void Awake()
     {
         GameManager.Instance.Init();

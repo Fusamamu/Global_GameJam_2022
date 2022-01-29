@@ -1,0 +1,82 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5352971231188810366
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5352971231188810307}
+  - component: {fileID: 5352971231188810304}
+  - component: {fileID: 5352971231188810305}
+  m_Layer: 0
+  m_Name: Spawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5352971231188810307
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5352971231188810366}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 6.49, y: 1, z: -9.3}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5352971231188810304
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5352971231188810366}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b989c1e408987bb41b5ba10ca5c6dd8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timerIsRunning: 1
+  spawnTimer: 0
+  timerText: {fileID: 0}
+  currentWaveOrder: 0
+--- !u!114 &5352971231188810305
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5352971231188810366}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 169c1437996126a4394a4ae1049bbe9e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ghostPrefab: {fileID: 5077931475795302141, guid: 28ebfb9375257704da92fb0127f35672, type: 3}
+  spawnArea:
+    m_Position: {x: 0, y: 0, z: 0}
+    m_Size: {x: -33, y: 0, z: 17}
+  randomSpawnPositions: []
+  debugGizmos: 1
+  gizmosSphereSize: 0.05
+  waveDataList:
+  - WaveOrder: 0
+    EnemyCount: 2
+    TimeLimit: 5
+    GroupSpawnPosition: {fileID: 0}
+  - WaveOrder: 1
+    EnemyCount: 4
+    TimeLimit: 5
+    GroupSpawnPosition: {fileID: 5352971231188810307}
+  - WaveOrder: 2
+    EnemyCount: 10
+    TimeLimit: 5
+    GroupSpawnPosition: {fileID: 5352971231188810307}

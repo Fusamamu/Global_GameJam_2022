@@ -34,6 +34,16 @@ public class SpawnTimer : MonoBehaviour
         }
         else
         {
+            var _ghostLeftCount = GhostManager.Instance.GetGhostLeftCountsByWaveIndex(currentWaveOrder);
+            if (_ghostLeftCount > 0)
+            {
+                GameManager.Instance.OnGameOver();
+                Debug.Log("Game Over");
+                DisplayTime(0);
+                return;
+            }
+            _currentWave.TimeLimit = 0;
+            
             currentWaveOrder++;
             OnTimeToSpawn?.Invoke(this);
         }

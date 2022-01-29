@@ -9759,7 +9759,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rigidbody: {fileID: 0}
-  speed: 6.4
+  speed: 2.91
 --- !u!54 &2705592748565518960
 Rigidbody:
   m_ObjectHideFlags: 0
