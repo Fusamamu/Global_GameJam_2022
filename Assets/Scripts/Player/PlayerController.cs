@@ -5,9 +5,15 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] private float inhaleForce = 0.5f;
-    [SerializeField] private float exhaleForce = 0.7f;
-
+    [SerializeField] private float inhaleForce = 7f;
+    [SerializeField] private float exhaleForce = 3f;
+    [Space]
+    [FoldoutGroup("Stamina")][SerializeField] private float inhaleStamina = 2;
+    [FoldoutGroup("Stamina")][SerializeField] private float exhaleStamina = 3;
+    [FoldoutGroup("Stamina")][SerializeField] private float staminaRegen = 2;
+    [FoldoutGroup("Stamina")][SerializeField] private int maxStamina = 15;
+    [SerializeField] [ReadOnly] private float stamina;
+    
     private Transform mousePos;
     private Rigidbody rb;
     private Camera cam;
@@ -17,6 +23,7 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        stamina = maxStamina;
         rb = GetComponent<Rigidbody>();
         cam = Camera.main;
         groundMask = LayerMask.GetMask("Ground");
@@ -27,7 +34,13 @@ public class PlayerController : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
+    {
+        UpdateInput();
+        UpdateStamina();
+    }
+
+    private void UpdateInput()
     {
         Ray _ray = cam.ScreenPointToRay(Input.mousePosition);
 
@@ -43,11 +56,27 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetMouseButtonUp(0)) //Exhale
         {
-            rb.AddForce(-direction * inhaleForce, ForceMode.Impulse);
+            if (stamina >= exhaleForce)
+            {
+                rb.AddForce(-direction * exhaleForce, ForceMode.Impulse);
+                stamina -= exhaleForce;
+            }
         }
         else if (Input.GetMouseButtonUp(1)) //Inhale
         {
-            rb.AddForce(direction * exhaleForce, ForceMode.Impulse);
+            if (stamina >= inhaleForce)
+            {
+                rb.AddForce(direction * inhaleForce, ForceMode.Impulse);
+                stamina -= inhaleForce;
+            }
+        }
+    }
+
+    private void UpdateStamina()
+    {
+        if (stamina <= maxStamina)
+        {
+            stamina += staminaRegen * Time.deltaTime;
         }
     }
 }
