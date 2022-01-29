@@ -1531,7 +1531,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5352971231188810305, guid: fd56f2a7d73d9e34791bff2c8c2e3903, type: 3}
       propertyPath: waveDataList.Array.data[0].TimeLimit
-      value: 5
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 5352971231188810305, guid: fd56f2a7d73d9e34791bff2c8c2e3903, type: 3}
       propertyPath: waveDataList.Array.data[1].TimeLimit
