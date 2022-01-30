@@ -18,7 +18,7 @@ public class MainUIController : MonoBehaviour
     {
         canvas = GetComponent<Canvas>();
         //canvas.worldCamera = Camera.main;
-        playerRef = GameManager.Instance.Player;
+        playerRef = GameManager.Instance.Player.Controller;
         playerRef.OnStaminaUpdate += UpdateStamina;
         staminaSlider.maxValue = playerRef.MAXStamina;
 

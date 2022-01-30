@@ -10,16 +10,16 @@ public class GameManager : Singleton<GameManager>
     public Filter currentFilter;
     public bool isGamePause = false;
     
-    [SerializeField] private PlayerController player;
+    [SerializeField] private Player player;
     [SerializeField] private GameplayManager gameplayManager;
 
-    public PlayerController Player => player;
+    public Player Player => player;
 
     public override void Init()
     {
         ResumeTime();
         base.Init();
-        player = FindObjectOfType<PlayerController>();
+        player = FindObjectOfType<Player>();
         gameplayManager = FindObjectOfType<GameplayManager>();
     }
 
@@ -43,6 +43,11 @@ public class GameManager : Singleton<GameManager>
         //Destroy(this.gameObject);
     }
 
+    public void GhostCaptured()
+    {
+        player.OnCapturedGhost?.Invoke();
+    }
+    
     public void GoToMainMenu()
     {
         SceneManager.LoadScene("01Menu");
