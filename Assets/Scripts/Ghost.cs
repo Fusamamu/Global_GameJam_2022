@@ -113,6 +113,7 @@ public class Ghost : MonoBehaviour
             //     
             //     Destroy(gameObject);
             // }));
+            GameManager.Instance.GhostCaptured();
         }
     }
 
