@@ -4986,10 +4986,12 @@ MonoBehaviour:
   vacuumParticlePrefab: {fileID: 0}
   rigidbody: {fileID: 0}
   speed: 5
-  CoolDowntime: 5
+  CoolDowntime: 8
   MaxVacuumCount: 2
   CurruntVacuumCount: 0
   isShrinking: 0
+  temporaryUnVacuumable: 0
+  vacuumableCoolDownTime: 7
 --- !u!1001 &222569643423640094
 PrefabInstance:
   m_ObjectHideFlags: 0
