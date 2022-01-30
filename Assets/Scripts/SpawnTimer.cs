@@ -67,9 +67,32 @@ public class SpawnTimer : MonoBehaviour
             
             currentWaveOrder++;
             OnTimeToSpawn?.Invoke(this);
+
+            if (currentWaveOrder == waveDataList.Count - 1)
+            {
+                StartCoroutine(StartBossSequence());
+            }
         }
            
         DisplayTime(_currentWave.TimeLimit);
+    }
+
+
+    private IEnumerator StartBossSequence()
+    {
+        yield return new WaitForSeconds(2);
+        StageManager.Instance.FlickerOff();
+        
+        yield return new WaitForSeconds(5);
+        StageManager.Instance.FlickerOn();
+        
+        //yield return new WaitForSeconds(10);
+        
+        // var _lastWave = GetWaveDataByOrderIndex(currentWaveOrder);
+        // while (_lastWave.TimeLimit > 0)
+        // {
+        //     StartCoroutine(StageManager.Instance.FlickerLoop());
+        // }
     }
 
     public int GetCurrentWaveOrderIndex()

@@ -1531,11 +1531,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5352971231188810305, guid: fd56f2a7d73d9e34791bff2c8c2e3903, type: 3}
       propertyPath: waveDataList.Array.data[0].TimeLimit
-      value: 60
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5352971231188810305, guid: fd56f2a7d73d9e34791bff2c8c2e3903, type: 3}
       propertyPath: waveDataList.Array.data[1].TimeLimit
-      value: 60
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5352971231188810305, guid: fd56f2a7d73d9e34791bff2c8c2e3903, type: 3}
       propertyPath: waveDataList.Array.data[2].TimeLimit
@@ -1543,15 +1543,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5352971231188810305, guid: fd56f2a7d73d9e34791bff2c8c2e3903, type: 3}
       propertyPath: waveDataList.Array.data[0].EnemyCount
-      value: 45
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5352971231188810305, guid: fd56f2a7d73d9e34791bff2c8c2e3903, type: 3}
       propertyPath: waveDataList.Array.data[1].EnemyCount
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5352971231188810305, guid: fd56f2a7d73d9e34791bff2c8c2e3903, type: 3}
       propertyPath: waveDataList.Array.data[2].EnemyCount
-      value: 4
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5352971231188810305, guid: fd56f2a7d73d9e34791bff2c8c2e3903, type: 3}
       propertyPath: waveDataList.Array.data[0].GroupSpawnPosition

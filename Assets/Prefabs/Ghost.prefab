@@ -9758,6 +9758,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99cc71cb6c0296541b0278ac2ce93cb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  vacuumParticlePrefab: {fileID: 5077931475138001222}
   rigidbody: {fileID: 0}
   speed: 2.91
 --- !u!54 &2705592748565518960
