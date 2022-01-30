@@ -18,7 +18,7 @@ public class Ghost : MonoBehaviour
 
     private Vector3 lastVelocity;
 
-    private bool isGettingVacuumed = false;
+    protected bool isGettingVacuumed = false;
     
     private void Start()
     {
@@ -34,7 +34,7 @@ public class Ghost : MonoBehaviour
         RandomDirection();
     }
 
-    private void Update()
+    protected virtual void Update()
     {
         if (isGettingVacuumed)
         {
@@ -90,7 +90,7 @@ public class Ghost : MonoBehaviour
         rigidbody.velocity = _velocity;
     }
 
-    public void GotVacuumed()
+    public virtual void GotVacuumed()
     {
         if (!isGettingVacuumed)
         {
@@ -120,6 +120,7 @@ public class Ghost : MonoBehaviour
             }));
 
             GameManager.Instance.GhostCaptured();
+
         }
     }
 

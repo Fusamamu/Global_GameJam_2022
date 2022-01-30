@@ -13,10 +13,13 @@ public class GameplayManager : MonoBehaviour
     [SerializeField] private WinUI winUI;
     [SerializeField] private CameraController cameraController;
     [SerializeField] private Canvas pauseCanvas;
-    
+
+    public static bool PreventSpaceBar = false;
+
     void Awake()
     {
         GameManager.Instance.Init();
+        PreventSpaceBar = false;
         var _winZone = FindObjectsOfType<WinZone>();
         OnWin += Win;
         CreateSceneAssets();
@@ -30,6 +33,8 @@ public class GameplayManager : MonoBehaviour
 
     private void UpdateInputListener()
     {
+        if(PreventSpaceBar) return;
+        
         if (Input.GetKeyDown(KeyCode.Space))
         {
             OnSwapFilter?.Invoke();
