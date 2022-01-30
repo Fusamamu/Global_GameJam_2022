@@ -4918,7 +4918,7 @@ GameObject:
   - component: {fileID: -8123064019048952166}
   - component: {fileID: 2705592748565518960}
   - component: {fileID: -4096244815838321470}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: GhostNegomata
   m_TagString: Ghost
   m_Icon: {fileID: 0}

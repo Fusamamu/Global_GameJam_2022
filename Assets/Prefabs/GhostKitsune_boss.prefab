@@ -4918,7 +4918,7 @@ GameObject:
   - component: {fileID: 2705592748565518960}
   - component: {fileID: -4096244815838321470}
   - component: {fileID: 4778669002145915961}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: GhostKitsune_boss
   m_TagString: Ghost
   m_Icon: {fileID: 0}
@@ -4933,7 +4933,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5077931475795302141}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.506, y: 0, z: -2.506}
+  m_LocalPosition: {x: -1.006, y: 0, z: -2.006}
   m_LocalScale: {x: 4, y: 4, z: 4}
   m_Children:
   - {fileID: 5077931474514895747}
