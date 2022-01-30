@@ -5,6 +5,9 @@ using UnityEngine;
 
 public class StageManager : Singleton<StageManager>
 {
+    public float FlipFrequency = 0.1f;
+    public int FlipCount = 10;
+    
     [SerializeField] private CameraController cameraController;
 
     private void Start()
@@ -17,7 +20,7 @@ public class StageManager : Singleton<StageManager>
         if(cameraController == null)
             cameraController = FindObjectOfType<CameraController>();
         
-        StartCoroutine(Wait(0.05f, 30));
+        StartCoroutine(Wait(FlipFrequency, FlipCount));
         
         cameraController.FilterOff();
        
@@ -28,7 +31,7 @@ public class StageManager : Singleton<StageManager>
         if(cameraController == null)
             cameraController = FindObjectOfType<CameraController>();
         
-        StartCoroutine(Wait(0.05f, 30));
+        StartCoroutine(Wait(FlipFrequency, FlipCount));
         
         cameraController.FilterOn();
        

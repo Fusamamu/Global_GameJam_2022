@@ -1597,7 +1597,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5352971231188810305, guid: fd56f2a7d73d9e34791bff2c8c2e3903, type: 3}
       propertyPath: waveDataList.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5352971231188810305, guid: fd56f2a7d73d9e34791bff2c8c2e3903, type: 3}
       propertyPath: waveDataList.Array.data[0].TimeLimit
@@ -1605,7 +1605,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5352971231188810305, guid: fd56f2a7d73d9e34791bff2c8c2e3903, type: 3}
       propertyPath: waveDataList.Array.data[1].TimeLimit
-      value: 500000
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 5352971231188810305, guid: fd56f2a7d73d9e34791bff2c8c2e3903, type: 3}
       propertyPath: waveDataList.Array.data[1].WaveOrder
@@ -1613,7 +1613,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5352971231188810305, guid: fd56f2a7d73d9e34791bff2c8c2e3903, type: 3}
       propertyPath: waveDataList.Array.data[2].TimeLimit
-      value: 100
+      value: 240
+      objectReference: {fileID: 0}
+    - target: {fileID: 5352971231188810305, guid: fd56f2a7d73d9e34791bff2c8c2e3903, type: 3}
+      propertyPath: waveDataList.Array.data[2].WaveOrder
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5352971231188810305, guid: fd56f2a7d73d9e34791bff2c8c2e3903, type: 3}
       propertyPath: waveDataList.Array.data[0].EnemyCount
@@ -1638,7 +1642,7 @@ PrefabInstance:
     - target: {fileID: 5352971231188810305, guid: fd56f2a7d73d9e34791bff2c8c2e3903, type: 3}
       propertyPath: waveDataList.Array.data[2].GroupSpawnPosition
       value: 
-      objectReference: {fileID: 1460188116}
+      objectReference: {fileID: 1611302775}
     - target: {fileID: 5352971231188810305, guid: fd56f2a7d73d9e34791bff2c8c2e3903, type: 3}
       propertyPath: waveDataList.Array.data[0].GhostPrefab.Array.size
       value: 1
@@ -1658,7 +1662,7 @@ PrefabInstance:
     - target: {fileID: 5352971231188810305, guid: fd56f2a7d73d9e34791bff2c8c2e3903, type: 3}
       propertyPath: waveDataList.Array.data[1].GhostPrefab.Array.data[0]
       value: 
-      objectReference: {fileID: 5077931475795302141, guid: f44aa61433b3ba5438174814b0568edf, type: 3}
+      objectReference: {fileID: 5077931475795302141, guid: a2825dea137e43d4496ade93a29bdddb, type: 3}
     - target: {fileID: 5352971231188810305, guid: fd56f2a7d73d9e34791bff2c8c2e3903, type: 3}
       propertyPath: waveDataList.Array.data[2].GhostPrefab.Array.data[0]
       value: 
@@ -10220,11 +10224,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aef2709073ed9e6459d4f0d4daff2e06, type: 3}
---- !u!4 &1460188116 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2145558850826406110, guid: aef2709073ed9e6459d4f0d4daff2e06, type: 3}
-  m_PrefabInstance: {fileID: 1460188115}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1461845306 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 55c4bde20ed31a243b65d60f26fc3a12, type: 3}
