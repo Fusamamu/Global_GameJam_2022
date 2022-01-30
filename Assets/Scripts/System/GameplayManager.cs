@@ -12,6 +12,8 @@ public class GameplayManager : MonoBehaviour
     [SerializeField] private MainUIController mainUIController;
     [SerializeField] private WinUI winUI;
     [SerializeField] private CameraController cameraController;
+
+    public static bool PreventSpaceBar = false;
     
     void Awake()
     {
@@ -29,6 +31,8 @@ public class GameplayManager : MonoBehaviour
 
     private void UpdateInputListener()
     {
+        if(PreventSpaceBar) return;
+        
         if (Input.GetKeyDown(KeyCode.Space))
         {
             OnSwapFilter?.Invoke();
