@@ -18,7 +18,7 @@ public class Ghost : MonoBehaviour
 
     private Vector3 lastVelocity;
 
-    private bool isGettingVacuumed = false;
+    protected bool isGettingVacuumed = false;
     
     private void Start()
     {
@@ -34,7 +34,7 @@ public class Ghost : MonoBehaviour
         RandomDirection();
     }
 
-    private void Update()
+    protected virtual void Update()
     {
         if (isGettingVacuumed)
         {
@@ -43,7 +43,9 @@ public class Ghost : MonoBehaviour
             var _currentPosition = transform.position;
             
             transform.position = Vector3.MoveTowards(_currentPosition, _playerPosition, 5 * Time.deltaTime);
-            spawnedVacuumParticle.transform.position = Vector3.MoveTowards(_currentPosition, _playerPosition, 5 * Time.deltaTime);
+            
+            if(spawnedVacuumParticle != null)
+                spawnedVacuumParticle.transform.position = Vector3.MoveTowards(_currentPosition, _playerPosition, 5 * Time.deltaTime);
         }
     }
 
@@ -88,16 +90,15 @@ public class Ghost : MonoBehaviour
         rigidbody.velocity = _velocity;
     }
 
-    public void GotVacuumed()
+    public virtual void GotVacuumed()
     {
         if (!isGettingVacuumed)
         {
             isGettingVacuumed = true;
 
-            spawnedVacuumParticle = Instantiate(vacuumParticlePrefab, transform.position, Quaternion.identity);
-            
-      
-            
+            if(vacuumParticlePrefab != null)
+                spawnedVacuumParticle = Instantiate(vacuumParticlePrefab, transform.position, Quaternion.identity);
+
             var _sequence = DOTween.Sequence();
             
             var _targetScale = Vector3.zero;
@@ -113,7 +114,9 @@ public class Ghost : MonoBehaviour
                 GhostManager.Instance.RemoveGhost(gameObject);
                 
                 Destroy(gameObject);
-                Destroy(spawnedVacuumParticle);
+                
+                if(spawnedVacuumParticle != null)
+                    Destroy(spawnedVacuumParticle);
             }));
 
             GameManager.Instance.GhostCaptured();

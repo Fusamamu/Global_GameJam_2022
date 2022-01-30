@@ -30,6 +30,11 @@ public class PlayerController : MonoBehaviour
     [FoldoutGroup("UnityEvent")] public UnityEvent<Vector3> OnExhale;
     [FoldoutGroup("UnityEvent")] public UnityEvent OnCollectedGhost;
 
+    [Header("Audio")] 
+    [SerializeField] private AudioClip inhaleSfx;
+    [SerializeField] private AudioClip exhaleSfx;
+    [SerializeField] private AudioClip triedSfx;
+
     [SerializeField] private ParticleSystem dizzyParticle;
     [SerializeField] private Transform arrowParent;
     private Transform mousePos;
@@ -77,6 +82,8 @@ public class PlayerController : MonoBehaviour
 
     private void UpdateInput()
     {
+        if (GameManager.Instance.isGameOver) return;
+        
         Ray _ray = cam.ScreenPointToRay(Input.mousePosition);
 
         if (Physics.Raycast(_ray, out RaycastHit _hit, float.MaxValue, groundMask))
@@ -108,10 +115,12 @@ public class PlayerController : MonoBehaviour
             rb.AddForce(-direction * exhaleForce, ForceMode.Impulse);
             stamina -= exhaleStamina;
             canMove = false;
+            SoundManager.Instance.PlaySFX(exhaleSfx);
             OnExhale?.Invoke(-direction);
         }
         else
         {
+            SoundManager.Instance.PlaySFX(triedSfx);
             OnOutStamina?.Invoke();
         }
     }
@@ -125,10 +134,12 @@ public class PlayerController : MonoBehaviour
             rb.AddForce(direction * inhaleForce, ForceMode.Impulse);
             stamina -= inhaleStamina;
             canMove = false;
+            SoundManager.Instance.PlaySFX(inhaleSfx);
             OnInhale?.Invoke(direction);
         }
         else
         {
+            SoundManager.Instance.PlaySFX(triedSfx);
             OnOutStamina?.Invoke();
         }
     }
