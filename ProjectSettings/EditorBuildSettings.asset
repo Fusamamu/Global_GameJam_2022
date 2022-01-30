@@ -12,12 +12,21 @@ EditorBuildSettings:
     path: Assets/Scenes/01Menu.unity
     guid: d8ad8addabead0644946ac99f3d38775
   - enabled: 1
+    path: Assets/Scenes/New Folder/opening2.unity
+    guid: 69be6084f5c65da42b7b271068aabb2c
+  - enabled: 1
     path: Assets/Scenes/New Folder/Tutorial_1.unity
     guid: 36ad1d04e0b69de4f83938416e47c055
+  - enabled: 1
+    path: Assets/Scenes/New Folder/Stage1_0.unity
+    guid: 10ca52c228f2bcb41ba7d59a2e2dace2
   - enabled: 1
     path: Assets/Scenes/New Folder/Stage1_1.unity
     guid: 103ac188c84794a419f3c1b3354eb2d4
   - enabled: 1
     path: Assets/Scenes/New Folder/Stage1_2.unity
     guid: 76a0024487afa2b4fa9c2e14585ad4b3
+  - enabled: 1
+    path: Assets/Scenes/New Folder/Ending2.unity
+    guid: cb5eb71c44a126244ba8298ce13410b3
   m_configObjects: {}

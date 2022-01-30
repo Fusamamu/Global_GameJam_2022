@@ -1434,4 +1434,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   creditCanvas: {fileID: 0}
-  stageSelectName: 02StageSelect
+  stageSelectName: opening2
