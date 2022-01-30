@@ -7,8 +7,17 @@ EditorBuildSettings:
   m_Scenes:
   - enabled: 1
     path: Assets/Scenes/00Start.unity
-    guid: 8229b391fba55de4984554665771ee14
+    guid: 5a92d8eddb3917e4d8fcb9c3ba5302da
   - enabled: 1
     path: Assets/Scenes/01Menu.unity
     guid: d8ad8addabead0644946ac99f3d38775
+  - enabled: 1
+    path: Assets/Scenes/New Folder/Tutorial_1.unity
+    guid: 36ad1d04e0b69de4f83938416e47c055
+  - enabled: 1
+    path: Assets/Scenes/New Folder/Stage1_1.unity
+    guid: 103ac188c84794a419f3c1b3354eb2d4
+  - enabled: 1
+    path: Assets/Scenes/New Folder/Stage1_2.unity
+    guid: 76a0024487afa2b4fa9c2e14585ad4b3
   m_configObjects: {}

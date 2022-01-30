@@ -64,6 +64,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
+        if (GameManager.Instance.isGameOver || GameManager.Instance.isGamePause) return;
         UpdateInput();
         UpdateStamina();
         UpdateTime();
@@ -82,8 +83,7 @@ public class PlayerController : MonoBehaviour
 
     private void UpdateInput()
     {
-        if (GameManager.Instance.isGameOver) return;
-        
+
         Ray _ray = cam.ScreenPointToRay(Input.mousePosition);
 
         if (Physics.Raycast(_ray, out RaycastHit _hit, float.MaxValue, groundMask))

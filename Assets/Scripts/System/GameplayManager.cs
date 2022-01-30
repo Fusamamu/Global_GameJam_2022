@@ -12,6 +12,7 @@ public class GameplayManager : MonoBehaviour
     [SerializeField] private MainUIController mainUIController;
     [SerializeField] private WinUI winUI;
     [SerializeField] private CameraController cameraController;
+    [SerializeField] private Canvas pauseCanvas;
     
     void Awake()
     {
@@ -33,6 +34,18 @@ public class GameplayManager : MonoBehaviour
         {
             OnSwapFilter?.Invoke();
         }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (!GameManager.Instance.isGamePause)
+            {
+                PauseGame();
+            }
+            else
+            {
+                ResumeGame();
+            }
+        }
     }
     
     
@@ -41,9 +54,17 @@ public class GameplayManager : MonoBehaviour
     {
         var _uiControllerPref = Resources.Load<MainUIController>("Prefabs/UI/MainCanvas");
         var _winUI = Resources.Load<WinUI>("Prefabs/UI/WinCanvas");
-        winUI = Instantiate(_winUI);
+        if (!winUI)
+        {
+            winUI = Instantiate(_winUI);
+        }
+
+        if (!mainUIController)
+        {
+            mainUIController = Instantiate(_uiControllerPref);
+        }
         winUI.gameObject.SetActive(false);
-        mainUIController = Instantiate(_uiControllerPref);
+        
         cameraController = gameObject.GetOrAddComponent<CameraController>();
     }
 
@@ -66,6 +87,23 @@ public class GameplayManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         GhostManager.Instance.ClearGhost();
         //Destroy(this.gameObject);
+    }
+
+    public void PauseGame()
+    {
+        pauseCanvas.gameObject.SetActive(true);
+        GameManager.Instance.PauseTime();
+    }
+
+    public void ResumeGame()
+    {
+        pauseCanvas.gameObject.SetActive(false);
+        GameManager.Instance.ResumeTime();
+    }
+
+    public void ChangeScene(string _scene)
+    {
+        SceneManager.LoadScene(_scene);
     }
     
     public void OnGameOver()
