@@ -19,6 +19,10 @@ public class SpawnTimer : MonoBehaviour
     private List<WaveData> waveDataList = new List<WaveData>();
     private GameplayManager gameplayManager;
 
+    public float WaitForFlipTimeInitial_1 = 3f;
+    public float WaitForFlipTimeInitial_2 = 3f;
+    
+    public float WaitForFlipTimeLoop = 5f;
     
     public enum WaveMode
     {
@@ -115,6 +119,19 @@ public class SpawnTimer : MonoBehaviour
     
     private void UpdateBossMode()
     {
+        if (currentWaveOrder > waveDataList.Count - 1)
+        {
+            if (!isClear)
+            {
+                GameManager.Instance.OnWin();
+                isClear = true;
+                return;
+            }
+
+            return;
+        }
+        
+        
         if (InitialStartBossMode)
         {
             StartCoroutine(StartBossSequence());
@@ -132,6 +149,12 @@ public class SpawnTimer : MonoBehaviour
 
             if (StartLoopFlicker)
                 StartCoroutine(LoopFlicker());
+            
+            var _ghostLeftCount = GhostManager.Instance.GetGhostLeftCountsByWaveIndex(_lastWaveIndex);
+            if (_ghostLeftCount == 0)
+            {
+                currentWaveOrder++;
+            }
         }
         else
         {
@@ -156,10 +179,10 @@ public class SpawnTimer : MonoBehaviour
     {
         StageManager.Instance.FlickerOn();
         
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(WaitForFlipTimeInitial_1);
         StageManager.Instance.FlickerOff();
         
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(WaitForFlipTimeInitial_2);
         StageManager.Instance.FlickerOn();
 
         StartLoopFlicker = true;
@@ -171,10 +194,10 @@ public class SpawnTimer : MonoBehaviour
         
         while (stillFightBoss)
         {
-            yield return new WaitForSeconds(10);
+            yield return new WaitForSeconds(WaitForFlipTimeLoop);
             StageManager.Instance.FlickerOff();
             
-            yield return new WaitForSeconds(10);
+            yield return new WaitForSeconds(WaitForFlipTimeLoop);
             StageManager.Instance.FlickerOn();
         }
     }

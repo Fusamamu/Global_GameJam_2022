@@ -36,6 +36,9 @@ public class Ghost : MonoBehaviour
 
     protected virtual void Update()
     {
+        if (transform.position.y > 1)
+            transform.position = new Vector3(transform.position.x, 1, transform.position.z);
+        
         if (isGettingVacuumed)
         {
             var _mainPlayer      = FindObjectOfType<Player>();
