@@ -20,6 +20,16 @@ public class GhostSpawner : MonoBehaviour
     
     [SerializeField] private List<WaveData> waveDataList = new List<WaveData>();
 
+    public int GetAllGhostsCountInWaveDataList()
+    {
+        int _ghostsCount = 0;
+
+        foreach (var _waveData in waveDataList)
+        {
+            _ghostsCount += _waveData.EnemyCount;
+        }
+        return _ghostsCount;
+    }
 
     private void Start()
     {
@@ -70,7 +80,10 @@ public class GhostSpawner : MonoBehaviour
 
             if (_waveData.GroupSpawnPosition != null)
             {
-                _spawnPos = _waveData.GroupSpawnPosition.GetChild(_i).position;
+                if(_i < _waveData.GroupSpawnPosition.childCount)
+                    _spawnPos = _waveData.GroupSpawnPosition.GetChild(_i).position;
+                else
+                    _spawnPos = _waveData.GroupSpawnPosition.GetChild(0).position;
             }
 
             var _randomInt   = Random.Range(0, _waveData.GhostPrefab.Count);

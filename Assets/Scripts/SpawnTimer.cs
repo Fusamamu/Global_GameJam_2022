@@ -23,6 +23,10 @@ public class SpawnTimer : MonoBehaviour
     public float WaitForFlipTimeInitial_2 = 3f;
     
     public float WaitForFlipTimeLoop = 5f;
+
+    public bool HavingBoss = true;
+    
+    public static event Action<int> OnNextWaveEntered = delegate {  };
     
     public enum WaveMode
     {
@@ -83,11 +87,15 @@ public class SpawnTimer : MonoBehaviour
 
                 currentWaveOrder++;
                 OnTimeToSpawn?.Invoke(this);
-                
-                if (currentWaveOrder == waveDataList.Count - 1)
+                OnNextWaveEntered?.Invoke(currentWaveOrder);
+
+                if (HavingBoss)
                 {
-                    mode = WaveMode.Boss;
-                    GameplayManager.PreventSpaceBar = true;
+                    if (currentWaveOrder == waveDataList.Count - 1)
+                    {
+                        mode = WaveMode.Boss;
+                        GameplayManager.PreventSpaceBar = true;
+                    }
                 }
             }
         }
@@ -106,11 +114,15 @@ public class SpawnTimer : MonoBehaviour
             
             currentWaveOrder++;
             OnTimeToSpawn?.Invoke(this);
-            
-            if (currentWaveOrder == waveDataList.Count - 1)
+            OnNextWaveEntered?.Invoke(currentWaveOrder);
+
+            if (HavingBoss)
             {
-                mode = WaveMode.Boss;
-                GameplayManager.PreventSpaceBar = true;
+                if (currentWaveOrder == waveDataList.Count - 1)
+                {
+                    mode = WaveMode.Boss;
+                    GameplayManager.PreventSpaceBar = true;
+                }
             }
         }
         
