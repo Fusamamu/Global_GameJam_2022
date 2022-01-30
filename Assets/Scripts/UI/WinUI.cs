@@ -5,8 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class WinUI : MonoBehaviour
 {
-    public void ContinueBtn()
+    public void ContinueBtn(string _stage)
     {
-        SceneManager.LoadScene("02StageSelect");
+        SceneManager.LoadScene(_stage);
     }
 }

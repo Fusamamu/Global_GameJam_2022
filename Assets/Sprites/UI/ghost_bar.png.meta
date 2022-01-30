@@ -1,16 +1,10 @@
 fileFormatVersion: 2
-guid: 7424cda356ea213469d31f0160e51ede
+guid: 00d0a7dfffbed9c40af3b62ad69c774e
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7184757024595527375
-    second: comic_open_all_0
-  - first:
-      213: 695862028283771043
-    second: comic_open_all_1
-  - first:
-      213: 4592588290000898787
-    second: comic_open_all_2
+      213: -5266231798267268482
+    second: ghost_bar_0
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -50,7 +44,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -96,17 +90,29 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: comic_open_all_0
+      name: ghost_bar_0
       rect:
         serializedVersion: 2
-        x: 280
-        y: 505
-        width: 1281
-        height: 496
+        x: 94
+        y: 237
+        width: 324
+        height: 39
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -114,50 +120,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 139bd777d8d9a4c90800000000000000
-      internalID: -7184757024595527375
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: comic_open_all_1
-      rect:
-        serializedVersion: 2
-        x: 283
-        y: 71
-        width: 640
-        height: 397
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 3a87980f3d238a900800000000000000
-      internalID: 695862028283771043
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: comic_open_all_2
-      rect:
-        serializedVersion: 2
-        x: 950
-        y: 65
-        width: 632
-        height: 408
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 3ea4f1997b62cbf30800000000000000
-      internalID: 4592588290000898787
+      spriteID: e72b967c4169ae6b0800000000000000
+      internalID: -5266231798267268482
       vertices: []
       indices: 
       edges: []
@@ -174,7 +138,7 @@ TextureImporter:
     secondaryTextures: []
   spritePackingTag: 
   pSDRemoveMatte: 0
-  pSDShowRemoveMatteOption: 1
+  pSDShowRemoveMatteOption: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 

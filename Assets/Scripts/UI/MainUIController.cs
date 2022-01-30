@@ -7,6 +7,9 @@ public class MainUIController : MonoBehaviour
 {
     [SerializeField] private PlayerController playerRef;
     [SerializeField] private Slider staminaSlider;
+    [SerializeField] private Image icon;
+    [SerializeField] private Sprite normal;
+    [SerializeField] private Sprite tried;
     private bool isGameOver = false;
     private Canvas canvas;
     
@@ -32,6 +35,14 @@ public class MainUIController : MonoBehaviour
     private void UpdateStamina()
     {
         staminaSlider.value = playerRef.Stamina;
+        if (playerRef.Stamina <= playerRef.MAXStamina * 0.3)
+        {
+            icon.sprite = tried;
+        }
+        else
+        {
+            icon.sprite = normal;
+        }
     }
 
     public void DisplayGameOverUI()

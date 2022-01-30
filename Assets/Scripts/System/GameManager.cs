@@ -21,6 +21,7 @@ public class GameManager : Singleton<GameManager>
         ResumeTime();
         base.Init();
         isGameOver = false;
+        isGamePause = false;
         player = FindObjectOfType<Player>();
         gameplayManager = FindObjectOfType<GameplayManager>();
     }
