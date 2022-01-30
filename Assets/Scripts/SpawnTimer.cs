@@ -93,5 +93,6 @@ public class WaveData
     public int   EnemyCount;
     public float TimeLimit;
     public Transform GroupSpawnPosition;
+    public List<GameObject> GhostPrefab;
     //public List<Vector3> SpawnPositions = new List<Vector3>();
 }
