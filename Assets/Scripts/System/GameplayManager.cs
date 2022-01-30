@@ -25,6 +25,7 @@ public class GameplayManager : MonoBehaviour
         PreventSpaceBar = false;
         
         SoundManager.Instance.PlayPairBGM(normalBGM, ghostBGM);
+        SoundManager.Instance.SwapBGM();
         
         OnWin += Win;
         CreateSceneAssets();
@@ -42,8 +43,8 @@ public class GameplayManager : MonoBehaviour
         
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            SoundManager.Instance.SwapBGM();
             OnSwapFilter?.Invoke();
+            SoundManager.Instance.SwapBGM();
         }
 
         if (Input.GetKeyDown(KeyCode.Escape))

@@ -39,6 +39,7 @@ public class SoundManager : Singleton<SoundManager>
 
     public void PlayPairBGM(AudioClip _audio1, AudioClip _audio2)
     {
+        Debug.Log("PlayPair");
         if (!bgmSource1)
         {
             bgmSource1 = gameObject.AddComponent<AudioSource>();
@@ -53,7 +54,9 @@ public class SoundManager : Singleton<SoundManager>
         bgmSource1.Stop();
         bgmSource2.Stop();
         bgmSource1.Play();
-        //bgmSource2.Play();
+        bgmSource2.Play();
+        bgmSource1.volume = 1;
+        bgmSource2.volume = 0;
     }
 
     public void SwapBGM()

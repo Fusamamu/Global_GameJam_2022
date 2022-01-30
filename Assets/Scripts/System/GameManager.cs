@@ -23,6 +23,7 @@ public class GameManager : Singleton<GameManager>
         isGameOver = false;
         isGamePause = false;
         player = FindObjectOfType<Player>();
+        currentFilter = Filter.Normal;
         gameplayManager = FindObjectOfType<GameplayManager>();
     }
 
