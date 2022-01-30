@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameplayManager : MonoBehaviour
 {
@@ -33,6 +34,8 @@ public class GameplayManager : MonoBehaviour
             OnSwapFilter?.Invoke();
         }
     }
+    
+    
 
     private void CreateSceneAssets()
     {
@@ -55,5 +58,25 @@ public class GameplayManager : MonoBehaviour
     {
         GameManager.Instance.PauseTime();
         winUI.gameObject.SetActive(true);
+    }
+    
+    public void ReStartGame()
+    {
+        GameManager.Instance.ResumeTime();
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        GhostManager.Instance.ClearGhost();
+        //Destroy(this.gameObject);
+    }
+    
+    public void OnGameOver()
+    {
+        GameManager.Instance.PauseTime();
+        var _mainUI = FindObjectOfType<MainUIController>();
+        _mainUI.DisplayGameOverUI();
+    }
+    
+    public void GoToMainMenu()
+    {
+        SceneManager.LoadScene("01Menu");
     }
 }

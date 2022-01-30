@@ -17,10 +17,12 @@ public class SpawnTimer : MonoBehaviour
     [SerializeField] private int currentWaveOrder = 0;
    
     private List<WaveData> waveDataList = new List<WaveData>();
+    private GameplayManager gameplayManager;
 
     private void Start()
     {
         waveDataList = FindObjectOfType<GhostSpawner>().GetWaveDataList();
+        gameplayManager = FindObjectOfType<GameplayManager>();
     }
 
     private void Update()
@@ -47,7 +49,7 @@ public class SpawnTimer : MonoBehaviour
             var _ghostLeftCount = GhostManager.Instance.GetGhostLeftCountsByWaveIndex(currentWaveOrder);
             if (_ghostLeftCount > 0)
             {
-                GameManager.Instance.OnGameOver();
+                gameplayManager.OnGameOver();
                 Debug.Log("Game Over");
                 DisplayTime(0);
                 return;

@@ -68,6 +68,7 @@ MonoBehaviour:
   OnChangedFilter:
     m_PersistentCalls:
       m_Calls: []
+  swapSfx: {fileID: 8300000, guid: 18ff5139392320a48bf0d2bb782ed955, type: 3}
 --- !u!1 &5389440907179936416
 GameObject:
   m_ObjectHideFlags: 0
@@ -338,6 +339,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 5328011521094731258, guid: 2bbc1c741d036e248b8469be93a68215, type: 3}
+      propertyPath: gameOverAudio
+      value: 
+      objectReference: {fileID: 8300000, guid: 9caa79e8d306211428e9ee06a4d558aa, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2bbc1c741d036e248b8469be93a68215, type: 3}
 --- !u!224 &56793135 stripped
