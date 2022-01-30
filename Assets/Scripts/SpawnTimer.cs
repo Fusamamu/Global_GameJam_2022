@@ -23,6 +23,10 @@ public class SpawnTimer : MonoBehaviour
     public float WaitForFlipTimeInitial_2 = 3f;
     
     public float WaitForFlipTimeLoop = 5f;
+
+    public bool HavingBoss = true;
+    
+    public static event Action<int> OnNextWaveEntered = delegate {  };
     
     public enum WaveMode
     {
@@ -34,6 +38,8 @@ public class SpawnTimer : MonoBehaviour
     private bool InitialStartBossMode = true;
     private bool StartLoopFlicker     = false;
     private bool stillFightBoss = false;
+
+    public float TimeLeft = 0;
     
     private void Start()
     {
@@ -109,14 +115,19 @@ public class SpawnTimer : MonoBehaviour
             
             currentWaveOrder++;
             OnTimeToSpawn?.Invoke(this);
-            
-            if (currentWaveOrder == waveDataList.Count - 1)
+            OnNextWaveEntered?.Invoke(currentWaveOrder);
+
+            if (HavingBoss)
             {
-                mode = WaveMode.Boss;
-                GameplayManager.PreventSpaceBar = true;
+                if (currentWaveOrder == waveDataList.Count - 1)
+                {
+                    mode = WaveMode.Boss;
+                    GameplayManager.PreventSpaceBar = true;
+                }
             }
         }
-        
+
+        TimeLeft = _currentWave.TimeLimit;
         DisplayTime(_currentWave.TimeLimit);
     }
 
@@ -184,7 +195,8 @@ public class SpawnTimer : MonoBehaviour
                 return;
             }
         }
-        
+
+        TimeLeft = _lastWave.TimeLimit;
         DisplayTime(_lastWave.TimeLimit);
     }
 

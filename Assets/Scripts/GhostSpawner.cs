@@ -20,19 +20,29 @@ public class GhostSpawner : MonoBehaviour
     
     [SerializeField] private List<WaveData> waveDataList = new List<WaveData>();
 
+    public int GetAllGhostsCountInWaveDataList()
+    {
+        int _ghostsCount = 0;
+
+        foreach (var _waveData in waveDataList)
+        {
+            _ghostsCount += _waveData.EnemyCount;
+        }
+        return _ghostsCount;
+    }
 
     private void Start()
     {
-        var _currentPos   = transform.position;
-        
-        var _posX = (int) _currentPos.x;
-        var _posY = (int) _currentPos.y;
-        var _posZ = (int) _currentPos.z;
-        
-        var _boundsCenter = new Vector3Int(_posX, _posY, _posZ);
-        
-        spawnArea = new BoundsInt(_boundsCenter, spawnArea.size);
-        randomSpawnPositions = Utility.Random.GetRandomPointInBounds(10, spawnArea);
+        // var _currentPos   = transform.position;
+        //
+        // var _posX = (int) _currentPos.x;
+        // var _posY = (int) _currentPos.y;
+        // var _posZ = (int) _currentPos.z;
+        //
+        // var _boundsCenter = new Vector3Int(_posX, _posY, _posZ);
+        //
+        // spawnArea = new BoundsInt(_boundsCenter, spawnArea.size);
+        // randomSpawnPositions = Utility.Random.GetRandomPointInBounds(10, spawnArea);
         
         InitialSpawnGhost();
         
@@ -70,7 +80,10 @@ public class GhostSpawner : MonoBehaviour
 
             if (_waveData.GroupSpawnPosition != null)
             {
-                _spawnPos = _waveData.GroupSpawnPosition.GetChild(_i).position;
+                if(_i < _waveData.GroupSpawnPosition.childCount)
+                    _spawnPos = _waveData.GroupSpawnPosition.GetChild(_i).position;
+                else
+                    _spawnPos = _waveData.GroupSpawnPosition.GetChild(0).position;
             }
 
             var _randomInt   = Random.Range(0, _waveData.GhostPrefab.Count);

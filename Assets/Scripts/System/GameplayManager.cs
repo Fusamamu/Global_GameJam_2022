@@ -91,6 +91,14 @@ public class GameplayManager : MonoBehaviour
     {
         GameManager.Instance.PauseTime();
         winUI.gameObject.SetActive(true);
+
+        var _timeLeft = FindObjectOfType<SpawnTimer>().TimeLeft;
+        
+        float _minutes = Mathf.FloorToInt(_timeLeft / 60);  
+        float _seconds = Mathf.FloorToInt(_timeLeft % 60);
+
+        var _timeText = $"{_minutes:00}:{_seconds:00}";
+        winUI.TimeLeftText.SetText("Time Left\n" + _timeText);
     }
     
     public void ReStartGame()
