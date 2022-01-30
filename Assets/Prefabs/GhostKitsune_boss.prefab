@@ -4915,9 +4915,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5077931475795302082}
-  - component: {fileID: -8123064019048952166}
   - component: {fileID: 2705592748565518960}
   - component: {fileID: -4096244815838321470}
+  - component: {fileID: 4778669002145915961}
   m_Layer: 8
   m_Name: GhostKitsune_boss
   m_TagString: Ghost
@@ -4934,7 +4934,7 @@ Transform:
   m_GameObject: {fileID: 5077931475795302141}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -2.506, y: 0, z: -2.506}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 4, y: 4, z: 4}
   m_Children:
   - {fileID: 5077931474514895747}
   - {fileID: 5077931475138001223}
@@ -4942,20 +4942,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &-8123064019048952166
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5077931475795302141}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 99cc71cb6c0296541b0278ac2ce93cb2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rigidbody: {fileID: 0}
-  speed: 2.91
 --- !u!54 &2705592748565518960
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -4983,8 +4969,27 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.25
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &4778669002145915961
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5077931475795302141}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98b547c2cec9d7149b916adc21a0dfee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  vacuumParticlePrefab: {fileID: 0}
+  rigidbody: {fileID: 0}
+  speed: 5
+  CoolDowntime: 5
+  MaxVacuumCount: 2
+  CurruntVacuumCount: 0
+  isShrinking: 0
 --- !u!1001 &222569643423640094
 PrefabInstance:
   m_ObjectHideFlags: 0

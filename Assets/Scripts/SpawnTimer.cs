@@ -141,6 +141,8 @@ public class SpawnTimer : MonoBehaviour
 
     private IEnumerator StartBossSequence()
     {
+        StageManager.Instance.FlickerOn();
+        
         yield return new WaitForSeconds(2);
         StageManager.Instance.FlickerOff();
         
