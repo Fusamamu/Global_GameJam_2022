@@ -73,7 +73,7 @@ public class GhostSpawner : MonoBehaviour
                 _spawnPos = _waveData.GroupSpawnPosition.GetChild(_i).position;
             }
 
-            var _randomInt   = Random.Range(0, _waveData.GhostPrefab.Count - 1);
+            var _randomInt   = Random.Range(0, _waveData.GhostPrefab.Count);
             var _ghostPrefab = _waveData.GhostPrefab[_randomInt];
             var _newGhost    = Instantiate(_ghostPrefab, _spawnPos, Quaternion.identity);
 
