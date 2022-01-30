@@ -867,11 +867,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5352971231188810305, guid: fd56f2a7d73d9e34791bff2c8c2e3903, type: 3}
       propertyPath: waveDataList.Array.data[1].TimeLimit
-      value: 30
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 5352971231188810305, guid: fd56f2a7d73d9e34791bff2c8c2e3903, type: 3}
       propertyPath: waveDataList.Array.data[2].TimeLimit
-      value: 30
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 5352971231188810305, guid: fd56f2a7d73d9e34791bff2c8c2e3903, type: 3}
       propertyPath: waveDataList.Array.data[0].EnemyCount
@@ -5616,7 +5616,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 536831248631164641, guid: 7d86cd1079d26404c9d3ca953a06d4b1, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 536831248749336428, guid: 7d86cd1079d26404c9d3ca953a06d4b1, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5698,9 +5698,17 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: -8.69
       objectReference: {fileID: 0}
+    - target: {fileID: 536831249708823472, guid: 7d86cd1079d26404c9d3ca953a06d4b1, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -5.72
+      objectReference: {fileID: 0}
+    - target: {fileID: 536831249708823472, guid: 7d86cd1079d26404c9d3ca953a06d4b1, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -7.57
+      objectReference: {fileID: 0}
     - target: {fileID: 536831249708823479, guid: 7d86cd1079d26404c9d3ca953a06d4b1, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 536831249794752408, guid: 7d86cd1079d26404c9d3ca953a06d4b1, type: 3}
       propertyPath: m_LocalPosition.x
