@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,7 +8,13 @@ public class StartMenu : MonoBehaviour
 {
     [SerializeField] private float waitTime = 1f;
     private bool canChangeScene;
-    
+    [SerializeField] private AudioClip bgm;
+
+    private void Start()
+    {
+        SoundManager.Instance.PlayBGM(bgm);
+    }
+
     void Update()
     {
         if (!canChangeScene)
