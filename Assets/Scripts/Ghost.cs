@@ -96,13 +96,7 @@ public class Ghost : MonoBehaviour
 
             spawnedVacuumParticle = Instantiate(vacuumParticlePrefab, transform.position, Quaternion.identity);
             
-            // var _spawnTimer       = FindObjectOfType<SpawnTimer>();
-            // var _currentWaveIndex = _spawnTimer.GetCurrentWaveOrderIndex();
-            //     
-            // GhostManager.Instance.RemoveGhostByWaveIndex(_currentWaveIndex, gameObject);
-            // GhostManager.Instance.RemoveGhost(gameObject);
-            //     
-            // Destroy(gameObject);
+      
             
             var _sequence = DOTween.Sequence();
             
@@ -121,6 +115,9 @@ public class Ghost : MonoBehaviour
                 Destroy(gameObject);
                 Destroy(spawnedVacuumParticle);
             }));
+
+            GameManager.Instance.GhostCaptured();
+
         }
     }
 
