@@ -38,7 +38,7 @@ public class WaveProgressBar : MonoBehaviour
         allWaveImages.Add(wave_3);
         allWaveImages.Add(wave_boss);
         
-        allWaveImages.ForEach(_o => _o.gameObject.SetActive(false));
+        //allWaveImages.ForEach(_o => _o.gameObject.SetActive(false));
 
 
         SpawnTimer.OnNextWaveEntered += OnNextWaveEnteredHandler;
@@ -73,16 +73,16 @@ public class WaveProgressBar : MonoBehaviour
         //     wave_boss.gameObject.SetActive(true);
         // }
         
-        if (_currentWaveIndex == 1)
-        {
-            wave_2.gameObject.SetActive(true);
-        }else if (_currentWaveIndex == 2)
-        {
-            wave_3.gameObject.SetActive(true);
-        }else if (_currentWaveIndex == 3)
-        {
-            wave_boss.gameObject.SetActive(true);
-        }
+        // if (_currentWaveIndex == 1)
+        // {
+        //     wave_2.gameObject.SetActive(true);
+        // }else if (_currentWaveIndex == 2)
+        // {
+        //     wave_3.gameObject.SetActive(true);
+        // }else if (_currentWaveIndex == 3)
+        // {
+        //     wave_boss.gameObject.SetActive(true);
+        // }
     }
 
     private float GetProgressUnitValue()

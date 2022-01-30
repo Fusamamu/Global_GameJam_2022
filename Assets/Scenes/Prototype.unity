@@ -336,6 +336,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1361103380428311665, guid: 7327956294dd64940bf1603d60962b70, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5389440907262726180, guid: 7327956294dd64940bf1603d60962b70, type: 3}
       propertyPath: m_Name
       value: System
@@ -382,6 +386,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5389440907262726187, guid: 7327956294dd64940bf1603d60962b70, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5637580277211844836, guid: 7327956294dd64940bf1603d60962b70, type: 3}
+      propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -483,7 +491,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 164032168}
-  m_LocalRotation: {x: 0.30755612, y: -0.000051159892, z: 0.00006581896, w: 0.95153004}
+  m_LocalRotation: {x: 0.3075573, y: -0.000051468473, z: 0.00006621601, w: 0.9515296}
   m_LocalPosition: {x: 0, y: 8.45, z: -11.72}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -753,9 +761,10 @@ MonoBehaviour:
   spawnArea:
     m_Position: {x: 0, y: 0, z: 0}
     m_Size: {x: 10, y: 1, z: 10}
-  spawnPositions: []
+  randomSpawnPositions: []
   debugGizmos: 0
   gizmosSphereSize: 0.25
+  waveDataList: []
 --- !u!4 &666424346
 Transform:
   m_ObjectHideFlags: 0
@@ -823,6 +832,13 @@ MonoBehaviour:
   timerIsRunning: 1
   spawnTimer: 3
   timerText: {fileID: 760492152}
+  isClear: 0
+  currentWaveOrder: 0
+  WaitForFlipTimeInitial_1: 3
+  WaitForFlipTimeInitial_2: 3
+  WaitForFlipTimeLoop: 5
+  HavingBoss: 1
+  TimeLeft: 0
 --- !u!114 &760492152
 MonoBehaviour:
   m_ObjectHideFlags: 0

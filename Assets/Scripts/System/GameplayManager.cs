@@ -8,6 +8,7 @@ public class GameplayManager : MonoBehaviour
 {
     public Action OnSwapFilter;
     public Action OnWin;
+    [SerializeField] private float swapCD;
     
     [SerializeField] private MainUIController mainUIController;
     [SerializeField] private WinUI winUI;
@@ -17,6 +18,8 @@ public class GameplayManager : MonoBehaviour
     [SerializeField] private AudioClip normalBGM;
     [SerializeField] private AudioClip ghostBGM;
 
+    private float cd;
+    private bool canSwap;
     public static bool PreventSpaceBar = false;
 
     void Awake()
@@ -35,11 +38,22 @@ public class GameplayManager : MonoBehaviour
     private void Update()
     {
         UpdateInputListener();
+        
+        if (cd >= 0)
+        {
+            canSwap = false;
+            cd -= Time.deltaTime;
+        }
+        else
+        {
+            canSwap = true;
+            cd = swapCD;
+        }
     }
 
     private void UpdateInputListener()
     {
-        if(PreventSpaceBar) return;
+        if(PreventSpaceBar || !canSwap) return;
         
         if (Input.GetKeyDown(KeyCode.Space))
         {
