@@ -8,6 +8,9 @@ using Random = UnityEngine.Random;
 public class Ghost : MonoBehaviour
 {
     public float Speed => speed;
+
+    [SerializeField] private GameObject vacuumParticlePrefab;
+    private GameObject spawnedVacuumParticle;
     
     [SerializeField] private Rigidbody rigidbody;
 
@@ -33,13 +36,15 @@ public class Ghost : MonoBehaviour
 
     private void Update()
     {
-        // if (isGettingVacuumed)
-        // {
-        //     var _mainPlayer = FindObjectOfType<Player>();
-        //     var _playerPosition = _mainPlayer.transform.position;
-        //     var _currentPosition = transform.position;
-        //     transform.position = Vector3.MoveTowards(_currentPosition, _playerPosition, 5 * Time.deltaTime);
-        // }
+        if (isGettingVacuumed)
+        {
+            var _mainPlayer      = FindObjectOfType<Player>();
+            var _playerPosition  = _mainPlayer.transform.position;
+            var _currentPosition = transform.position;
+            
+            transform.position = Vector3.MoveTowards(_currentPosition, _playerPosition, 5 * Time.deltaTime);
+            spawnedVacuumParticle.transform.position = Vector3.MoveTowards(_currentPosition, _playerPosition, 5 * Time.deltaTime);
+        }
     }
 
     private void OnCollisionEnter(Collision _other)
@@ -88,32 +93,31 @@ public class Ghost : MonoBehaviour
         if (!isGettingVacuumed)
         {
             isGettingVacuumed = true;
+
+            spawnedVacuumParticle = Instantiate(vacuumParticlePrefab, transform.position, Quaternion.identity);
             
-            var _spawnTimer       = FindObjectOfType<SpawnTimer>();
-            var _currentWaveIndex = _spawnTimer.GetCurrentWaveOrderIndex();
-                
-            GhostManager.Instance.RemoveGhostByWaveIndex(_currentWaveIndex, gameObject);
-            GhostManager.Instance.RemoveGhost(gameObject);
-                
-            Destroy(gameObject);
+      
             
-            // var _sequence = DOTween.Sequence();
-            //
-            // var _targetScale = Vector3.zero;
-            // var _duration = 1f;
-            //
-            // _sequence.Append(transform.DOPunchScale(new Vector3(0.5f, 0.5f, 0.5f), 10f, 10, 1f));
-            // _sequence.Join(transform.DOScale(_targetScale, _duration).OnComplete(() =>
-            // {
-            //     var _spawnTimer       = FindObjectOfType<SpawnTimer>();
-            //     var _currentWaveIndex = _spawnTimer.GetCurrentWaveOrderIndex();
-            //     
-            //     GhostManager.Instance.RemoveGhostByWaveIndex(_currentWaveIndex, gameObject);
-            //     GhostManager.Instance.RemoveGhost(gameObject);
-            //     
-            //     Destroy(gameObject);
-            // }));
+            var _sequence = DOTween.Sequence();
+            
+            var _targetScale = Vector3.zero;
+            var _duration = 0.5f;
+            
+            _sequence.Append(transform.DOPunchScale(new Vector3(0.5f, 0.5f, 0.5f), _duration, 10, 1f));
+            _sequence.Join(transform.DOScale(_targetScale, _duration).OnComplete(() =>
+            {
+                var _spawnTimer       = FindObjectOfType<SpawnTimer>();
+                var _currentWaveIndex = _spawnTimer.GetCurrentWaveOrderIndex();
+                
+                GhostManager.Instance.RemoveGhostByWaveIndex(_currentWaveIndex, gameObject);
+                GhostManager.Instance.RemoveGhost(gameObject);
+                
+                Destroy(gameObject);
+                Destroy(spawnedVacuumParticle);
+            }));
+
             GameManager.Instance.GhostCaptured();
+
         }
     }
 

@@ -51,7 +51,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 93d378afa09ddd4449c18f70f02c17bf, type: 2}
+  - {fileID: 2100000, guid: aa2750078ec498549a67b3c7158afeb6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4919,7 +4919,7 @@ GameObject:
   - component: {fileID: 2705592748565518960}
   - component: {fileID: -4096244815838321470}
   m_Layer: 8
-  m_Name: Ghost
+  m_Name: GhostKappa
   m_TagString: Ghost
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4954,6 +4954,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99cc71cb6c0296541b0278ac2ce93cb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  vacuumParticlePrefab: {fileID: 8082091364868848454, guid: 41d8b69e88261994892da80f4dbf5438, type: 3}
   rigidbody: {fileID: 0}
   speed: 2.91
 --- !u!54 &2705592748565518960

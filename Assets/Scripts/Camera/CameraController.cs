@@ -39,4 +39,24 @@ public class CameraController : MonoBehaviour
         
         OnChangedFilter?.Invoke(GameManager.Instance.currentFilter);
     }
+
+    public void FilterOn()
+    {
+        GameManager.Instance.currentFilter = Filter.Ghost;
+        
+        camera.cullingMask ^= 1 << LayerMask.NameToLayer("NormalRealm");
+        camera.cullingMask ^= 1 << LayerMask.NameToLayer("ShadowRealm");
+        
+        OnChangedFilter?.Invoke(GameManager.Instance.currentFilter);
+    }
+
+    public void FilterOff()
+    {
+        GameManager.Instance.currentFilter = Filter.Normal;
+        
+        camera.cullingMask ^= 1 << LayerMask.NameToLayer("NormalRealm");
+        camera.cullingMask ^= 1 << LayerMask.NameToLayer("ShadowRealm");
+        
+        OnChangedFilter?.Invoke(GameManager.Instance.currentFilter);
+    }
 }
