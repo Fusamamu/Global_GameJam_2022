@@ -43,7 +43,9 @@ public class Ghost : MonoBehaviour
             var _currentPosition = transform.position;
             
             transform.position = Vector3.MoveTowards(_currentPosition, _playerPosition, 5 * Time.deltaTime);
-            spawnedVacuumParticle.transform.position = Vector3.MoveTowards(_currentPosition, _playerPosition, 5 * Time.deltaTime);
+            
+            if(spawnedVacuumParticle != null)
+                spawnedVacuumParticle.transform.position = Vector3.MoveTowards(_currentPosition, _playerPosition, 5 * Time.deltaTime);
         }
     }
 
@@ -94,10 +96,9 @@ public class Ghost : MonoBehaviour
         {
             isGettingVacuumed = true;
 
-            spawnedVacuumParticle = Instantiate(vacuumParticlePrefab, transform.position, Quaternion.identity);
-            
-      
-            
+            if(vacuumParticlePrefab != null)
+                spawnedVacuumParticle = Instantiate(vacuumParticlePrefab, transform.position, Quaternion.identity);
+
             var _sequence = DOTween.Sequence();
             
             var _targetScale = Vector3.zero;
@@ -113,11 +114,12 @@ public class Ghost : MonoBehaviour
                 GhostManager.Instance.RemoveGhost(gameObject);
                 
                 Destroy(gameObject);
-                Destroy(spawnedVacuumParticle);
+                
+                if(spawnedVacuumParticle != null)
+                    Destroy(spawnedVacuumParticle);
             }));
 
             GameManager.Instance.GhostCaptured();
-
         }
     }
 

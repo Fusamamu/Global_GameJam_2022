@@ -19,6 +19,17 @@ public class SpawnTimer : MonoBehaviour
     private List<WaveData> waveDataList = new List<WaveData>();
     private GameplayManager gameplayManager;
 
+    public enum WaveMode
+    {
+        Normal,  Boss
+    }
+
+    private WaveMode mode = WaveMode.Normal;
+
+    private bool InitialStartBossMode = true;
+    private bool StartLoopFlicker     = false;
+    private bool stillFightBoss = false;
+    
     private void Start()
     {
         waveDataList = FindObjectOfType<GhostSpawner>().GetWaveDataList();
@@ -26,6 +37,19 @@ public class SpawnTimer : MonoBehaviour
     }
 
     private void Update()
+    {
+        switch (mode)
+        {
+            case WaveMode.Normal:
+                UpdateNormalMode();
+                break;
+            case WaveMode.Boss:
+                UpdateBossMode();
+                break;
+        }
+    }
+
+    private void UpdateNormalMode()
     {
         if (currentWaveOrder > waveDataList.Count - 1)
         {
@@ -35,17 +59,79 @@ public class SpawnTimer : MonoBehaviour
                 isClear = true;
                 return;
             }
+
             return;
         }
-        
-        var _currentWave = GetWaveDataByOrderIndex(currentWaveOrder);
 
+        var _currentWave = GetWaveDataByOrderIndex(currentWaveOrder);
         if (_currentWave.TimeLimit > 0)
         {
             _currentWave.TimeLimit -= Time.deltaTime;
-            
+
             var _ghostLeftCount = GhostManager.Instance.GetGhostLeftCountsByWaveIndex(currentWaveOrder);
             if (_ghostLeftCount == 0)
+            {
+                var _nextWaveIndex = currentWaveOrder + 1;
+                var _nextWave = GetWaveDataByOrderIndex(_nextWaveIndex);
+                _nextWave.TimeLimit += _currentWave.TimeLimit;
+
+                currentWaveOrder++;
+                OnTimeToSpawn?.Invoke(this);
+
+            }
+        }
+        else
+        {
+
+            // var _ghostLeftCount = GhostManager.Instance.GetGhostLeftCountsByWaveIndex(currentWaveOrder);
+            // if (_ghostLeftCount > 0)
+            // {
+            //     GameManager.Instance.OnGameOver();
+            //     DisplayTime(0);
+            //     return;
+            // }
+            // _currentWave.TimeLimit = 0;
+            
+            currentWaveOrder++;
+            OnTimeToSpawn?.Invoke(this);
+
+            if (currentWaveOrder == waveDataList.Count - 1)
+            {
+                mode = WaveMode.Boss;
+            }
+        }
+        
+        DisplayTime(_currentWave.TimeLimit);
+    }
+    
+    private void UpdateBossMode()
+    {
+        if (InitialStartBossMode)
+        {
+            StartCoroutine(StartBossSequence());
+            InitialStartBossMode = false;
+        }
+
+        var _lastWaveIndex = waveDataList.Count - 1;
+        var _lastWave     = GetWaveDataByOrderIndex(_lastWaveIndex);
+        
+        if (_lastWave.TimeLimit > 0)
+        {
+            _lastWave.TimeLimit -= Time.deltaTime;
+
+            stillFightBoss = true;
+
+            if (StartLoopFlicker)
+                StartCoroutine(LoopFlicker());
+        }
+        else
+        {
+            stillFightBoss = false;
+            StopCoroutine(LoopFlicker());
+            StageManager.Instance.FlickerOn();
+            
+            var _ghostLeftCount = GhostManager.Instance.GetGhostLeftCountsByWaveIndex(_lastWaveIndex);
+            if (_ghostLeftCount > 0)
             {
                 gameplayManager.OnGameOver();
                 Debug.Log("Game Over");
@@ -53,20 +139,9 @@ public class SpawnTimer : MonoBehaviour
                 return;
             }
         }
-        else
-        {
-            currentWaveOrder++;
-            OnTimeToSpawn?.Invoke(this);
-
-            if (currentWaveOrder == waveDataList.Count - 1)
-            {
-                StartCoroutine(StartBossSequence());
-            }
-        }
-           
-        DisplayTime(_currentWave.TimeLimit);
+        
+        DisplayTime(_lastWave.TimeLimit);
     }
-
 
     private IEnumerator StartBossSequence()
     {
@@ -75,16 +150,25 @@ public class SpawnTimer : MonoBehaviour
         
         yield return new WaitForSeconds(5);
         StageManager.Instance.FlickerOn();
-        
-        //yield return new WaitForSeconds(10);
-        
-        // var _lastWave = GetWaveDataByOrderIndex(currentWaveOrder);
-        // while (_lastWave.TimeLimit > 0)
-        // {
-        //     StartCoroutine(StageManager.Instance.FlickerLoop());
-        // }
+
+        StartLoopFlicker = true;
     }
 
+    private IEnumerator LoopFlicker()
+    {
+        StartLoopFlicker = false;
+        
+        while (stillFightBoss)
+        {
+            yield return new WaitForSeconds(10);
+            StageManager.Instance.FlickerOff();
+            
+            yield return new WaitForSeconds(10);
+            StageManager.Instance.FlickerOn();
+        }
+    }
+    
+    
     public int GetCurrentWaveOrderIndex()
     {
         return currentWaveOrder;
