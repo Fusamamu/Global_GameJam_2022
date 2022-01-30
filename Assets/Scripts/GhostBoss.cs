@@ -15,7 +15,7 @@ public class GhostBoss : Ghost
     private Vector3 originScale;
 
     public bool temporaryUnVacuumable = false;
-    public float vacuumableCoolDownTime = 5;
+    public float vacuumableCoolDownTime = 2.5f;
 
     private void Awake()
     {
@@ -58,7 +58,7 @@ public class GhostBoss : Ghost
         // isGettingVacuumed = true;
         if(temporaryUnVacuumable) return;
 
-        temporaryUnVacuumable = true;
+        //temporaryUnVacuumable = true;
 
         CurruntVacuumCount++;
 
