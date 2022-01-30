@@ -59,12 +59,7 @@ public class SpawnTimer : MonoBehaviour
     {
         if (currentWaveOrder > waveDataList.Count - 1)
         {
-            if (!isClear)
-            {
-                GameManager.Instance.OnWin();
-                isClear = true;
-                return;
-            }
+            Win();
 
             return;
         }
@@ -79,15 +74,23 @@ public class SpawnTimer : MonoBehaviour
             {
                 var _nextWaveIndex = currentWaveOrder + 1;
                 var _nextWave      = GetWaveDataByOrderIndex(_nextWaveIndex);
-                _nextWave.TimeLimit += _currentWave.TimeLimit;
-
-                currentWaveOrder++;
-                OnTimeToSpawn?.Invoke(this);
-                
-                if (currentWaveOrder == waveDataList.Count - 1)
+                if (_nextWave != null)
                 {
-                    mode = WaveMode.Boss;
-                    GameplayManager.PreventSpaceBar = true;
+                    _nextWave.TimeLimit += _currentWave.TimeLimit;
+
+                    currentWaveOrder++;
+                    OnTimeToSpawn?.Invoke(this);
+                
+                    if (currentWaveOrder == waveDataList.Count - 1)
+                    {
+                        mode = WaveMode.Boss;
+                        GameplayManager.PreventSpaceBar = true;
+                    }
+                }
+                else
+                {
+                    Win();
+                    return;
                 }
             }
         }
@@ -115,6 +118,16 @@ public class SpawnTimer : MonoBehaviour
         }
         
         DisplayTime(_currentWave.TimeLimit);
+    }
+
+    private void Win()
+    {
+        if (!isClear)
+        {
+            GameManager.Instance.OnWin();
+            isClear = true;
+            return;
+        }
     }
     
     private void UpdateBossMode()
