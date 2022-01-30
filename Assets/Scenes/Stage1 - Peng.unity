@@ -1629,7 +1629,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5352971231188810305, guid: fd56f2a7d73d9e34791bff2c8c2e3903, type: 3}
       propertyPath: waveDataList.Array.data[0].EnemyCount
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5352971231188810305, guid: fd56f2a7d73d9e34791bff2c8c2e3903, type: 3}
       propertyPath: waveDataList.Array.data[1].EnemyCount
@@ -3667,6 +3667,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5799350891972454256, guid: f0cdbc939e0872e4e8a633d832de4bf7, type: 3}
   m_PrefabInstance: {fileID: 527588953}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &531848146 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7919475936790938048, guid: 7327956294dd64940bf1603d60962b70, type: 3}
+  m_PrefabInstance: {fileID: 693918280}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &537780184
 GameObject:
   m_ObjectHideFlags: 0
@@ -4661,6 +4672,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3284063435187259383, guid: 7327956294dd64940bf1603d60962b70, type: 3}
       propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3350550578025000334, guid: 7327956294dd64940bf1603d60962b70, type: 3}
+      propertyPath: TimeLeftText
+      value: 
+      objectReference: {fileID: 531848146}
+    - target: {fileID: 4351194848884734276, guid: 7327956294dd64940bf1603d60962b70, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5389440907262726180, guid: 7327956294dd64940bf1603d60962b70, type: 3}

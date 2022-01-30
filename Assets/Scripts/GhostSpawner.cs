@@ -33,16 +33,16 @@ public class GhostSpawner : MonoBehaviour
 
     private void Start()
     {
-        var _currentPos   = transform.position;
-        
-        var _posX = (int) _currentPos.x;
-        var _posY = (int) _currentPos.y;
-        var _posZ = (int) _currentPos.z;
-        
-        var _boundsCenter = new Vector3Int(_posX, _posY, _posZ);
-        
-        spawnArea = new BoundsInt(_boundsCenter, spawnArea.size);
-        randomSpawnPositions = Utility.Random.GetRandomPointInBounds(10, spawnArea);
+        // var _currentPos   = transform.position;
+        //
+        // var _posX = (int) _currentPos.x;
+        // var _posY = (int) _currentPos.y;
+        // var _posZ = (int) _currentPos.z;
+        //
+        // var _boundsCenter = new Vector3Int(_posX, _posY, _posZ);
+        //
+        // spawnArea = new BoundsInt(_boundsCenter, spawnArea.size);
+        // randomSpawnPositions = Utility.Random.GetRandomPointInBounds(10, spawnArea);
         
         InitialSpawnGhost();
         

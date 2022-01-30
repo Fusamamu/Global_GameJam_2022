@@ -38,6 +38,8 @@ public class SpawnTimer : MonoBehaviour
     private bool InitialStartBossMode = true;
     private bool StartLoopFlicker     = false;
     private bool stillFightBoss = false;
+
+    public float TimeLeft = 0;
     
     private void Start()
     {
@@ -125,7 +127,8 @@ public class SpawnTimer : MonoBehaviour
                 }
             }
         }
-        
+
+        TimeLeft = _currentWave.TimeLimit;
         DisplayTime(_currentWave.TimeLimit);
     }
     
@@ -183,7 +186,8 @@ public class SpawnTimer : MonoBehaviour
                 return;
             }
         }
-        
+
+        TimeLeft = _lastWave.TimeLimit;
         DisplayTime(_lastWave.TimeLimit);
     }
 

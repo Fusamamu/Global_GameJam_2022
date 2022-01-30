@@ -46,6 +46,12 @@ public class WaveProgressBar : MonoBehaviour
         wave_1.gameObject.SetActive(true);
     }
 
+    private void OnDestroy()
+    {
+        GhostManager.OnGhostRemoved -= OnGhostRemoveHandler;
+        SpawnTimer.OnNextWaveEntered -= OnNextWaveEnteredHandler;
+    }
+
     private void OnGhostRemoveHandler()
     {
         progressBar.value += unitValue;
