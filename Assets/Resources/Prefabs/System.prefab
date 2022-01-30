@@ -778,6 +778,8 @@ MonoBehaviour:
   winUI: {fileID: 3350550578025000334}
   cameraController: {fileID: 0}
   pauseCanvas: {fileID: 4160289241082378988}
+  normalBGM: {fileID: 8300000, guid: cbac18e1610f073469879b5470a5bad2, type: 3}
+  ghostBGM: {fileID: 8300000, guid: b01a7f6c0bb2c724eb0cff3a251aa0bf, type: 3}
 --- !u!114 &5389440906132589774
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1324,6 +1326,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5389440907262726187}
     m_Modifications:
+    - target: {fileID: 1536381503486347132, guid: 2bbc1c741d036e248b8469be93a68215, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3546715579069306075, guid: 2bbc1c741d036e248b8469be93a68215, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -1414,6 +1420,50 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3546715579069306079, guid: 2bbc1c741d036e248b8469be93a68215, type: 3}
       propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3546715579501692323, guid: 2bbc1c741d036e248b8469be93a68215, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 5389440906132589768}
+    - target: {fileID: 3546715579501692323, guid: 2bbc1c741d036e248b8469be93a68215, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnGameOver
+      objectReference: {fileID: 0}
+    - target: {fileID: 3546715579501692323, guid: 2bbc1c741d036e248b8469be93a68215, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: GameplayManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3546715580004611255, guid: 2bbc1c741d036e248b8469be93a68215, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3546715580004611255, guid: 2bbc1c741d036e248b8469be93a68215, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3546715580004611255, guid: 2bbc1c741d036e248b8469be93a68215, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 5389440906132589768}
+    - target: {fileID: 3546715580004611255, guid: 2bbc1c741d036e248b8469be93a68215, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3546715580004611255, guid: 2bbc1c741d036e248b8469be93a68215, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: GoToMainMenu
+      objectReference: {fileID: 0}
+    - target: {fileID: 3546715580004611255, guid: 2bbc1c741d036e248b8469be93a68215, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: GameplayManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3546715580004611255, guid: 2bbc1c741d036e248b8469be93a68215, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 7152954041386705933, guid: 2bbc1c741d036e248b8469be93a68215, type: 3}
+      propertyPath: m_RaycastTarget
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -1523,6 +1573,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 885379368459160488, guid: 0783ef64ab7ba7841823d98fcc27fb73, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3285379500163324237, guid: 0783ef64ab7ba7841823d98fcc27fb73, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5148454042534136096, guid: 0783ef64ab7ba7841823d98fcc27fb73, type: 3}
+      propertyPath: m_RaycastTarget
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7421866292827151863, guid: 0783ef64ab7ba7841823d98fcc27fb73, type: 3}

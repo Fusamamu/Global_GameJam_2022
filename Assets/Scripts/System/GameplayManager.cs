@@ -14,13 +14,18 @@ public class GameplayManager : MonoBehaviour
     [SerializeField] private CameraController cameraController;
     [SerializeField] private Canvas pauseCanvas;
 
+    [SerializeField] private AudioClip normalBGM;
+    [SerializeField] private AudioClip ghostBGM;
+
     public static bool PreventSpaceBar = false;
 
     void Awake()
     {
         GameManager.Instance.Init();
         PreventSpaceBar = false;
-        var _winZone = FindObjectsOfType<WinZone>();
+        
+        SoundManager.Instance.PlayPairBGM(normalBGM, ghostBGM);
+        
         OnWin += Win;
         CreateSceneAssets();
         Init();
@@ -37,6 +42,7 @@ public class GameplayManager : MonoBehaviour
         
         if (Input.GetKeyDown(KeyCode.Space))
         {
+            SoundManager.Instance.SwapBGM();
             OnSwapFilter?.Invoke();
         }
 
