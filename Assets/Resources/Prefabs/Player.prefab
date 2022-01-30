@@ -549,8 +549,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveCD: 0.2
   canMove: 0
-  inhaleForce: 10
-  exhaleForce: 5
+  inhaleForce: 9
+  exhaleForce: 4
   inhaleStamina: 5
   exhaleStamina: 2
   staminaRegen: 4
