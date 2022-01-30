@@ -604,7 +604,7 @@ MonoBehaviour:
   OnCollectedGhost:
     m_PersistentCalls:
       m_Calls: []
-  inhaleSfx: {fileID: 8300000, guid: 1066e200e3d65394ba55ede7e888d873, type: 3}
+  inhaleSfx: {fileID: 8300000, guid: a5e60aa53433ac446b6f3dd447a9c507, type: 3}
   exhaleSfx: {fileID: 8300000, guid: e75e4b764ebefc64db992571d739c451, type: 3}
   triedSfx: {fileID: 8300000, guid: 1c3782dc3db4f6d43b2256a292b5b333, type: 3}
   dizzyParticle: {fileID: 5861402339457297447}

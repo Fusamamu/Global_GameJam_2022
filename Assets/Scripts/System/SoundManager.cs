@@ -55,6 +55,9 @@ public class SoundManager : Singleton<SoundManager>
         bgmSource2.Stop();
         bgmSource1.Play();
         bgmSource2.Play();
+
+        bgmSource1.loop = true;
+        bgmSource2.loop = true;
         bgmSource1.volume = 1;
         bgmSource2.volume = 0;
     }
