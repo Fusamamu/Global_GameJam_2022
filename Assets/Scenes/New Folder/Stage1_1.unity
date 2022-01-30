@@ -5080,6 +5080,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 2285759013504800822, guid: c7c1bdb9f3ac268418e50dfa6a66638f, type: 3}
+      propertyPath: exhaleForce
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2285759013504800822, guid: c7c1bdb9f3ac268418e50dfa6a66638f, type: 3}
+      propertyPath: inhaleForce
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 7731099760291947806, guid: c7c1bdb9f3ac268418e50dfa6a66638f, type: 3}
       propertyPath: waveDataList.Array.data[0].GroupSpawnPosition
       value: 
