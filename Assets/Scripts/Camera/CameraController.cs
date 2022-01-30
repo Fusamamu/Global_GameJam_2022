@@ -9,6 +9,7 @@ public class CameraController : MonoBehaviour
     public LayerMask shadowMask;
     public UnityEvent<Filter> OnChangedFilter;
     private Camera camera;
+    [SerializeField] private AudioClip swapSfx;
     
     public void Init()
     {
@@ -30,6 +31,8 @@ public class CameraController : MonoBehaviour
     public void SwapFilter()
     {
         GameManager.Instance.currentFilter = GameManager.Instance.currentFilter == Filter.Normal ? Filter.Ghost : Filter.Normal;
+        
+        SoundManager.Instance.PlaySFX(swapSfx);
         
         camera.cullingMask ^= 1 << LayerMask.NameToLayer("NormalRealm");
         camera.cullingMask ^= 1 << LayerMask.NameToLayer("ShadowRealm");

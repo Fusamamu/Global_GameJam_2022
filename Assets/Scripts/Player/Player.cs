@@ -11,6 +11,7 @@ public class Player : MonoBehaviour
     public ParticleSystem captureParticle;
     [SerializeField] private PlayerController playerController;
 
+    [Header("Audio")] [SerializeField] private AudioClip captureSfx;
     public PlayerController Controller
     {
         get => playerController;
@@ -27,6 +28,7 @@ public class Player : MonoBehaviour
 
     public void ShowCaptureEffect()
     {
+        SoundManager.Instance.PlaySFX(captureSfx);
         captureParticle.Play();
     }
     

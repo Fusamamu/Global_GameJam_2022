@@ -98,7 +98,7 @@ public class Ghost : MonoBehaviour
 
             if(vacuumParticlePrefab != null)
                 spawnedVacuumParticle = Instantiate(vacuumParticlePrefab, transform.position, Quaternion.identity);
-            
+
             var _sequence = DOTween.Sequence();
             
             var _targetScale = Vector3.zero;

@@ -8,10 +8,17 @@ public class GameOverUI : MonoBehaviour
 {
     [SerializeField] private Button restartBtn;
     [SerializeField] private Button backBtn;
+    [SerializeField] private AudioClip gameOverAudio;
 
     private void Start()
     {
-        restartBtn.onClick.AddListener(GameManager.Instance.ReStartGame);
-        backBtn.onClick.AddListener(GameManager.Instance.GoToMainMenu);
+        var _manager = FindObjectOfType<GameplayManager>();
+        restartBtn.onClick.AddListener(_manager.ReStartGame);
+        backBtn.onClick.AddListener(_manager.GoToMainMenu);
+    }
+
+    public void OnGameOver()
+    {
+        SoundManager.Instance.PlaySFX(gameOverAudio);
     }
 }

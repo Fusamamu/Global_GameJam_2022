@@ -253,6 +253,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   restartBtn: {fileID: 3546715579501692323}
   backBtn: {fileID: 3546715580004611255}
+  gameOverAudio: {fileID: 0}
 --- !u!1 &3546715579501692321
 GameObject:
   m_ObjectHideFlags: 0
@@ -265,6 +266,7 @@ GameObject:
   - component: {fileID: 3546715579501692317}
   - component: {fileID: 3546715579501692316}
   - component: {fileID: 3546715579501692323}
+  - component: {fileID: 7344949800925305435}
   m_Layer: 5
   m_Name: Continue
   m_TagString: Untagged
@@ -447,6 +449,20 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &7344949800925305435
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3546715579501692321}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df342e4ea0dd4e1429dcd225bcc944bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mouseOver: {fileID: 8300000, guid: 41673a04f0a444e4e8da1dea225c07c9, type: 3}
+  mouseClick: {fileID: 8300000, guid: 3264d7c6c1f7a644cbadcc671c0bca73, type: 3}
 --- !u!1 &3546715580004611253
 GameObject:
   m_ObjectHideFlags: 0
@@ -459,6 +475,7 @@ GameObject:
   - component: {fileID: 3546715580004611249}
   - component: {fileID: 3546715580004611248}
   - component: {fileID: 3546715580004611255}
+  - component: {fileID: 6125792995701030989}
   m_Layer: 5
   m_Name: Menu
   m_TagString: Untagged
@@ -629,3 +646,17 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &6125792995701030989
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3546715580004611253}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df342e4ea0dd4e1429dcd225bcc944bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mouseOver: {fileID: 8300000, guid: 41673a04f0a444e4e8da1dea225c07c9, type: 3}
+  mouseClick: {fileID: 8300000, guid: 3264d7c6c1f7a644cbadcc671c0bca73, type: 3}

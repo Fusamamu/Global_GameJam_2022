@@ -9,6 +9,7 @@ public class GameManager : Singleton<GameManager>
 {
     public Filter currentFilter;
     public bool isGamePause = false;
+    public bool isGameOver = false;
     
     [SerializeField] private Player player;
     [SerializeField] private GameplayManager gameplayManager;
@@ -19,6 +20,7 @@ public class GameManager : Singleton<GameManager>
     {
         ResumeTime();
         base.Init();
+        isGameOver = false;
         player = FindObjectOfType<Player>();
         gameplayManager = FindObjectOfType<GameplayManager>();
     }
@@ -35,33 +37,14 @@ public class GameManager : Singleton<GameManager>
         isGamePause = false;
     }
     
-    public void ReStartGame()
-    {
-        ResumeTime();
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        GhostManager.Instance.ClearGhost();
-        //Destroy(this.gameObject);
-    }
 
     public void GhostCaptured()
     {
         player.OnCapturedGhost?.Invoke();
     }
-    
-    public void GoToMainMenu()
-    {
-        SceneManager.LoadScene("01Menu");
-    }
 
     public void OnWin()
     {
         gameplayManager.Win();
-    }
-
-    public void OnGameOver()
-    {
-        PauseTime();
-        var _mainUI = FindObjectOfType<MainUIController>();
-        _mainUI.DisplayGameOverUI();
     }
 }

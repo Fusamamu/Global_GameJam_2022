@@ -13,11 +13,24 @@ public class SoundManager : Singleton<SoundManager>
 
     public void PlaySFX(AudioClip _audio)
     {
+        if (!sfxSource)
+        {
+            sfxSource = gameObject.AddComponent<AudioSource>();
+        }
         sfxSource.PlayOneShot(_audio);
+        
     }
 
     public void PlayBGM(AudioClip _audio)
     {
+        if (!bgmSource1)
+        {
+            bgmSource1 = gameObject.AddComponent<AudioSource>();
+        }
+        if (!bgmSource2)
+        {
+            bgmSource2 = gameObject.AddComponent<AudioSource>();
+        }
         bgmSource1.clip = _audio;
         bgmSource2.Stop();
         bgmSource1.Play();
@@ -25,6 +38,15 @@ public class SoundManager : Singleton<SoundManager>
 
     public void PlayPairBGM(AudioClip _audio1, AudioClip _audio2)
     {
+        if (!bgmSource1)
+        {
+            bgmSource1 = gameObject.AddComponent<AudioSource>();
+        }
+        if (!bgmSource2)
+        {
+            bgmSource2 = gameObject.AddComponent<AudioSource>();
+        }
+        
         bgmSource1.clip = _audio1;
         bgmSource2.clip = _audio2;
         bgmSource1.Play();
@@ -33,6 +55,15 @@ public class SoundManager : Singleton<SoundManager>
 
     public void SwapBGM()
     {
+        if (!bgmSource1)
+        {
+            bgmSource1 = gameObject.AddComponent<AudioSource>();
+        }
+        if (!bgmSource2)
+        {
+            bgmSource2 = gameObject.AddComponent<AudioSource>();
+        }
+        
         if (GameManager.Instance.currentFilter == Filter.Normal)
         {
             bgmSource1.DOFade(1, 0.5f);

@@ -7,12 +7,12 @@ public class MainUIController : MonoBehaviour
 {
     [SerializeField] private PlayerController playerRef;
     [SerializeField] private Slider staminaSlider;
-    
+    private bool isGameOver = false;
     private Canvas canvas;
     
     public PlayerController PlayerRef { get => playerRef; set => playerRef = value; }
 
-    [SerializeField] private Canvas gameOverCanvas;
+    [SerializeField] private GameOverUI gameOverCanvas;
 
     public void Init()
     {
@@ -24,7 +24,7 @@ public class MainUIController : MonoBehaviour
 
         if (gameOverCanvas == null)
         {
-            gameOverCanvas = GameObject.Find("GameOverCanvas").GetComponent<Canvas>();
+            gameOverCanvas = GameObject.Find("GameOverCanvas").GetComponent<GameOverUI>();
             gameOverCanvas.gameObject.SetActive(false);
         }
     }
@@ -36,6 +36,10 @@ public class MainUIController : MonoBehaviour
 
     public void DisplayGameOverUI()
     {
+        if (isGameOver) return;
+        GameManager.Instance.isGameOver = true;
         gameOverCanvas.gameObject.SetActive(true);
+        gameOverCanvas.OnGameOver();
+        isGameOver = true;
     }
 }
