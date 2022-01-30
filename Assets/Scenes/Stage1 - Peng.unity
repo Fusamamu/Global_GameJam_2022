@@ -1587,6 +1587,10 @@ PrefabInstance:
       propertyPath: timerText
       value: 
       objectReference: {fileID: 897298686}
+    - target: {fileID: 5352971231188810304, guid: fd56f2a7d73d9e34791bff2c8c2e3903, type: 3}
+      propertyPath: GhostSpawner
+      value: 
+      objectReference: {fileID: 455072084}
     - target: {fileID: 5352971231188810305, guid: fd56f2a7d73d9e34791bff2c8c2e3903, type: 3}
       propertyPath: debugGizmos
       value: 1
@@ -1596,12 +1600,20 @@ PrefabInstance:
       value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 5352971231188810305, guid: fd56f2a7d73d9e34791bff2c8c2e3903, type: 3}
+      propertyPath: waveDataList.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5352971231188810305, guid: fd56f2a7d73d9e34791bff2c8c2e3903, type: 3}
       propertyPath: waveDataList.Array.data[0].TimeLimit
-      value: 3
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 5352971231188810305, guid: fd56f2a7d73d9e34791bff2c8c2e3903, type: 3}
       propertyPath: waveDataList.Array.data[1].TimeLimit
-      value: 3
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 5352971231188810305, guid: fd56f2a7d73d9e34791bff2c8c2e3903, type: 3}
+      propertyPath: waveDataList.Array.data[1].WaveOrder
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5352971231188810305, guid: fd56f2a7d73d9e34791bff2c8c2e3903, type: 3}
       propertyPath: waveDataList.Array.data[2].TimeLimit
@@ -1626,7 +1638,7 @@ PrefabInstance:
     - target: {fileID: 5352971231188810305, guid: fd56f2a7d73d9e34791bff2c8c2e3903, type: 3}
       propertyPath: waveDataList.Array.data[1].GroupSpawnPosition
       value: 
-      objectReference: {fileID: 591887437}
+      objectReference: {fileID: 1460188116}
     - target: {fileID: 5352971231188810305, guid: fd56f2a7d73d9e34791bff2c8c2e3903, type: 3}
       propertyPath: waveDataList.Array.data[2].GroupSpawnPosition
       value: 
@@ -1650,7 +1662,7 @@ PrefabInstance:
     - target: {fileID: 5352971231188810305, guid: fd56f2a7d73d9e34791bff2c8c2e3903, type: 3}
       propertyPath: waveDataList.Array.data[1].GhostPrefab.Array.data[0]
       value: 
-      objectReference: {fileID: 5077931475795302141, guid: a2825dea137e43d4496ade93a29bdddb, type: 3}
+      objectReference: {fileID: 5077931475795302141, guid: f44aa61433b3ba5438174814b0568edf, type: 3}
     - target: {fileID: 5352971231188810305, guid: fd56f2a7d73d9e34791bff2c8c2e3903, type: 3}
       propertyPath: waveDataList.Array.data[2].GhostPrefab.Array.data[0]
       value: 
@@ -3272,6 +3284,17 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &455072084 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5352971231188810305, guid: fd56f2a7d73d9e34791bff2c8c2e3903, type: 3}
+  m_PrefabInstance: {fileID: 190074171}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 169c1437996126a4394a4ae1049bbe9e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &471193780
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4140,11 +4163,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e03ce305a1fdde44f86281c31f3bf07a, type: 3}
---- !u!4 &591887437 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1139365680436023530, guid: e03ce305a1fdde44f86281c31f3bf07a, type: 3}
-  m_PrefabInstance: {fileID: 591887436}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &597683612 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8643951208862608353, guid: 5109411c8003c3c4480fc8bf4f95b1ae, type: 3}

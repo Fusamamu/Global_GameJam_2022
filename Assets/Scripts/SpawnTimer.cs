@@ -19,6 +19,7 @@ public class SpawnTimer : MonoBehaviour
     private List<WaveData> waveDataList = new List<WaveData>();
     private GameplayManager gameplayManager;
 
+    
     public enum WaveMode
     {
         Normal,  Boss
@@ -32,7 +33,8 @@ public class SpawnTimer : MonoBehaviour
     
     private void Start()
     {
-        waveDataList = FindObjectOfType<GhostSpawner>().GetWaveDataList();
+        waveDataList    = FindObjectOfType<GhostSpawner>().GetWaveDataList();
+        
         gameplayManager = FindObjectOfType<GameplayManager>();
     }
 
@@ -72,32 +74,38 @@ public class SpawnTimer : MonoBehaviour
             if (_ghostLeftCount == 0)
             {
                 var _nextWaveIndex = currentWaveOrder + 1;
-                var _nextWave = GetWaveDataByOrderIndex(_nextWaveIndex);
+                var _nextWave      = GetWaveDataByOrderIndex(_nextWaveIndex);
                 _nextWave.TimeLimit += _currentWave.TimeLimit;
 
                 currentWaveOrder++;
                 OnTimeToSpawn?.Invoke(this);
-
+                
+                if (currentWaveOrder == waveDataList.Count - 1)
+                {
+                    mode = WaveMode.Boss;
+                    GameplayManager.PreventSpaceBar = true;
+                }
             }
         }
         else
         {
-
-            // var _ghostLeftCount = GhostManager.Instance.GetGhostLeftCountsByWaveIndex(currentWaveOrder);
-            // if (_ghostLeftCount > 0)
-            // {
-            //     GameManager.Instance.OnGameOver();
-            //     DisplayTime(0);
-            //     return;
-            // }
-            // _currentWave.TimeLimit = 0;
+            var _ghostLeftCount = GhostManager.Instance.GetGhostLeftCountsByWaveIndex(currentWaveOrder);
+            if (_ghostLeftCount > 0)
+            {
+                gameplayManager.OnGameOver();
+                DisplayTime(0);
+                return;
+            }
+            
+            _currentWave.TimeLimit = 0;
             
             currentWaveOrder++;
             OnTimeToSpawn?.Invoke(this);
-
+            
             if (currentWaveOrder == waveDataList.Count - 1)
             {
                 mode = WaveMode.Boss;
+                GameplayManager.PreventSpaceBar = true;
             }
         }
         
@@ -113,7 +121,7 @@ public class SpawnTimer : MonoBehaviour
         }
 
         var _lastWaveIndex = waveDataList.Count - 1;
-        var _lastWave     = GetWaveDataByOrderIndex(_lastWaveIndex);
+        var _lastWave      = GetWaveDataByOrderIndex(_lastWaveIndex);
         
         if (_lastWave.TimeLimit > 0)
         {

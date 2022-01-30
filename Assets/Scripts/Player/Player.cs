@@ -25,7 +25,7 @@ public class Player : MonoBehaviour
         OnHitDeadZone.AddListener(playerController.Dizzy);
         OnCapturedGhost += ShowCaptureEffect;
     }
-
+    
     public void ShowCaptureEffect()
     {
         SoundManager.Instance.PlaySFX(captureSfx);
@@ -42,6 +42,12 @@ public class Player : MonoBehaviour
         if (_other.gameObject.CompareTag("DeadZone"))
         {
             OnHitDeadZone?.Invoke();
+        }
+        
+        if (_other.collider.CompareTag("Ghost"))
+        {
+            var _ghost = _other.collider.gameObject;
+            _ghost.GetComponent<Ghost>().ReflectBack();
         }
     }
 }
