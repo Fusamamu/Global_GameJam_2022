@@ -70,10 +70,12 @@ public class GhostSpawner : MonoBehaviour
 
             if (_waveData.GroupSpawnPosition != null)
             {
-                _spawnPos = _waveData.GroupSpawnPosition.GetChild(_i).position;
+                _spawnPos = _waveData.GroupSpawnPosition.GetChild(0).position;
             }
-        
-            var _newGhost = Instantiate(ghostPrefab, _spawnPos, Quaternion.identity);
+
+            var _randomInt   = Random.Range(0, _waveData.GhostPrefab.Count - 1);
+            var _ghostPrefab = _waveData.GhostPrefab[_randomInt];
+            var _newGhost    = Instantiate(_ghostPrefab, _spawnPos, Quaternion.identity);
 
             _newGhosts.Add(_newGhost);
             GhostManager.Instance.StoreGhost(_newGhost);
@@ -106,7 +108,6 @@ public class GhostSpawner : MonoBehaviour
         
         // Gizmos.color = new Color(1, 0, 0, 0.5f);
         // Gizmos.DrawCube(transform.position, spawnArea.size);
-        //
         // Gizmos.color = Color.yellow;
 
         if (waveDataList != null)

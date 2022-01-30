@@ -5,7 +5,6 @@ using DG.Tweening;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-
 public class Ghost : MonoBehaviour
 {
     public float Speed => speed;
@@ -41,6 +40,23 @@ public class Ghost : MonoBehaviour
         //     var _currentPosition = transform.position;
         //     transform.position = Vector3.MoveTowards(_currentPosition, _playerPosition, 5 * Time.deltaTime);
         // }
+    }
+
+    private void OnCollisionEnter(Collision _other)
+    {
+        if (_other.collider.CompareTag("Ghost"))
+        {
+            var _ghost = _other.collider.gameObject;
+            _ghost.GetComponent<Ghost>().ReflectBack();
+            
+            ReflectBack();
+        }
+    }
+
+    public void ReflectBack()
+    {
+        var _lastVelocity = GetNormalizedLastVelocity() * -2;
+        SetVelocity(_lastVelocity);
     }
 
     private void FixedUpdate()
