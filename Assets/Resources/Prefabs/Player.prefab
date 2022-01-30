@@ -6183,6 +6183,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GetGhostVfx
       objectReference: {fileID: 0}
+    - target: {fileID: 8082091364868848454, guid: 41d8b69e88261994892da80f4dbf5438, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9034488421369351591, guid: 41d8b69e88261994892da80f4dbf5438, type: 3}
       propertyPath: m_RootOrder
       value: 10
