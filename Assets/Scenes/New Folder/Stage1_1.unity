@@ -5040,14 +5040,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 2285759013504800822, guid: c7c1bdb9f3ac268418e50dfa6a66638f, type: 3}
-      propertyPath: staminaRegen
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 2285759013504800822, guid: c7c1bdb9f3ac268418e50dfa6a66638f, type: 3}
-      propertyPath: inhaleStamina
-      value: 5
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c7c1bdb9f3ac268418e50dfa6a66638f, type: 3}
 --- !u!1001 &1407046392
