@@ -51,7 +51,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 93d378afa09ddd4449c18f70f02c17bf, type: 2}
+  - {fileID: 2100000, guid: c45ce05796f6cf14b8b74c6305835ba0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4919,7 +4919,7 @@ GameObject:
   - component: {fileID: 2705592748565518960}
   - component: {fileID: -4096244815838321470}
   m_Layer: 8
-  m_Name: Ghost
+  m_Name: GhostKarasu
   m_TagString: Ghost
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

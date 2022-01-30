@@ -70,7 +70,7 @@ public class GhostSpawner : MonoBehaviour
 
             if (_waveData.GroupSpawnPosition != null)
             {
-                _spawnPos = _waveData.GroupSpawnPosition.GetChild(0).position;
+                _spawnPos = _waveData.GroupSpawnPosition.GetChild(_i).position;
             }
 
             var _randomInt   = Random.Range(0, _waveData.GhostPrefab.Count - 1);
