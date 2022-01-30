@@ -41,18 +41,29 @@ public class SpawnTimer : MonoBehaviour
         if (_currentWave.TimeLimit > 0)
         {
             _currentWave.TimeLimit -= Time.deltaTime;
+            
+            var _ghostLeftCount = GhostManager.Instance.GetGhostLeftCountsByWaveIndex(currentWaveOrder);
+            if (_ghostLeftCount == 0)
+            {
+                var _nextWaveIndex = currentWaveOrder + 1;
+                var _nextWave      = GetWaveDataByOrderIndex(_nextWaveIndex);
+                _nextWave.TimeLimit += _currentWave.TimeLimit;
+                
+                currentWaveOrder++;
+                OnTimeToSpawn?.Invoke(this);
+            }
         }
         else
         {
-            var _ghostLeftCount = GhostManager.Instance.GetGhostLeftCountsByWaveIndex(currentWaveOrder);
-            if (_ghostLeftCount > 0)
-            {
-                GameManager.Instance.OnGameOver();
-                Debug.Log("Game Over");
-                DisplayTime(0);
-                return;
-            }
-            _currentWave.TimeLimit = 0;
+            // var _ghostLeftCount = GhostManager.Instance.GetGhostLeftCountsByWaveIndex(currentWaveOrder);
+            // if (_ghostLeftCount > 0)
+            // {
+            //     GameManager.Instance.OnGameOver();
+            //     Debug.Log("Game Over");
+            //     DisplayTime(0);
+            //     return;
+            // }
+            // _currentWave.TimeLimit = 0;
             
             currentWaveOrder++;
             OnTimeToSpawn?.Invoke(this);
@@ -92,7 +103,8 @@ public class WaveData
     public int   WaveOrder;
     public int   EnemyCount;
     public float TimeLimit;
+    
     public Transform GroupSpawnPosition;
+    
     public List<GameObject> GhostPrefab;
-    //public List<Vector3> SpawnPositions = new List<Vector3>();
 }
